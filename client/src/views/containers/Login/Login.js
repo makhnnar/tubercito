@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserNameLogin from '../../components/forms/UserNameLogin';
 import Password from '../../components/forms/Password';
 import ButtonLogin from '../../components/forms/ButtonLogin';
