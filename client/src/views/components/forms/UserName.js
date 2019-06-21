@@ -24,9 +24,9 @@ class UserName extends Component {
 	 	}
 	 }
 
-	/*componentDidMount(){
+	componentDidMount(){
 		this.props.shareMethods(this.validarDatos.bind(this))
-	}*/
+	}
 
 
 	render(){

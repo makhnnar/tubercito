@@ -36,36 +36,46 @@ class BirthdayPicker extends Component {
 			{
 				return false;
 			}
+
+		}else{
+			return null
 		}
 	}
 
 
 	 validarDatos() {
-	 	let birthday = document.getElementById('birthday').value;
-	 	document.getElementById('birthday').value = '';
-	 	if(this.validateFecha(birthday))
-	 	{
-	 		return birthday;
-	 	}
-	 	else
+	 	let Birthday = document.getElementById('Birth').value;
+	 	document.getElementById('Birth').value = '';
+
+	 	let result = this.validarFecha(Birthday);
+
+	 	if(result === null)
 	 	{
 	 		return null;
 	 	}
+	 	else if(result === false)
+	 	{
+	 		return false;
+	 	}
+	 	else
+	 	{
+	 		return Birthday;
+	 	}
 	 }
 
-	/*componentDidMount(){
+	componentDidMount(){
 		this.props.shareMethods(this.validarDatos.bind(this))
-	}*/
+	}
 
 
 	render(){
 		return (
 			<input
-				 id="birthday"
+				 id="Birth"
 	             type="text"
-	             name="birthdayPicker"
+	             name="BirthdayPicker"
 	             className="register-input"
-	             placeholder=" p.ej: MMM/DDD/YYY"/>     
+	             placeholder=" p.ej: MMM-DDD-YYY"/>     
 		)
 	  }
 	}

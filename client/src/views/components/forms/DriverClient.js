@@ -6,11 +6,15 @@ class DriverClient extends Component {
     	super(props);
   	}
 
+  	/*componentDidMount(){
+		this.props.shareMethods(this.Client.bind(this),this.Driver.bind(this))
+	}*/
+
 	render(){
 		return (
 			<div>
-			<input type="radio" name="person" value="Driver"/> Driver
-			<input type="radio" name="person" value="Client"/> Client
+			<input type="radio" name="person" value="Driver" /> Driver
+			<input type="radio" name="person" value="Client" /> Client
 	        </div>      
 		)
 	  }

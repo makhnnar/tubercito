@@ -23,9 +23,9 @@ class PasswordRegister extends Component {
 		}
 	}
 
-	/*componentDidMount(){
-		this.props.shareMethod(this.validarPassword.bind(this))
-	}*/
+	componentDidMount(){
+		this.props.shareMethods(this.validarPassword.bind(this))
+	}
 
 	render(){
 		return (

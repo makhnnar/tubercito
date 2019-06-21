@@ -13,7 +13,7 @@ class IdCard extends Component {
 
 	 validarDatos() {
 	 	let IdCard = document.getElementById('Idcard').value;
-	 	document.getElementById('idcard').value = '';
+	 	document.getElementById('Idcard').value = '';
 	 	if(this.validateIdCard(IdCard))
 	 	{
 	 		return IdCard;
@@ -24,9 +24,9 @@ class IdCard extends Component {
 	 	}
 	 }
 
-	/*componentDidMount(){
+	componentDidMount(){
 		this.props.shareMethods(this.validarDatos.bind(this))
-	}*/
+	}
 
 
 	render(){
