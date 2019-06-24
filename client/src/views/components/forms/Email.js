@@ -11,31 +11,22 @@ class Email extends Component {
 		 return /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(value);
 	 }
 
-	 validarDatos() {
-	 	let email = document.getElementById('email').value;
-	 	document.getElementById('email').value = '';
-	 	if(this.validateEmail(email))
-	 	{
-	 		return email;
-	 	}
-	 	else
-	 	{
-	 		return null;
+	 onChangeEmail = (event) => {
+	 	let email = event.target.value;
+	 	if(this.validateEmail(email)){
+	 		this.props.getEmail(email)
+	 	}else{
+	 		this.props.getEmail(null)
 	 	}
 	 }
-
-	componentDidMount(){
-		this.props.shareMethods(this.validarDatos.bind(this))
-	}
-
 
 	render(){
 		return (
 			<input
-				 id="email"
 	             type="text"
 	             name="email"
 	             className="register-input"
+	             onChange={this.onChangeEmail}
 	             placeholder="  UbercitoApp@example.com"/>
 	            
 		)

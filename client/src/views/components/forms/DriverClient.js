@@ -6,15 +6,16 @@ class DriverClient extends Component {
     	super(props);
   	}
 
-  	/*componentDidMount(){
-		this.props.shareMethods(this.Client.bind(this),this.Driver.bind(this))
-	}*/
+  	handleInputChange = (event) => {
+  		let DriverOrClient = event.target.value;
+  		this.props.getDriverClient(DriverOrClient);
+  	}
 
 	render(){
 		return (
 			<div>
-			<input type="radio" name="person" value="Driver" /> Driver
-			<input type="radio" name="person" value="Client" /> Client
+			<input type="radio" name="person" value="Driver" onChange={this.handleInputChange} /> Driver
+			<input type="radio" name="person" value="Client" onChange={this.handleInputChange} /> Client
 	        </div>      
 		)
 	  }

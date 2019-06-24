@@ -18,109 +18,77 @@ class Register extends React.Component {
         Username:'',
         Email:'',
         Password:'',
-        ConfirmPassword:'',
+        PasswordConfirm:'',
         IdCard:'',
-        Birthday:''
+        Birthday:'',
+        Gender:'J',
+        DriverOrClient:''
       }
     }
 
-    Username = (validarUsername) => {
-      this.validarUsername = validarUsername;
+    getUsername = (Username) => {
+      this.setState({Username}) 
     };
-    Email = (validarEmail) => {
-      this.validarEmail = validarEmail;
+    getEmail = (Email) => {
+      this.setState({Email})
     };
-    Password = (validarPassword) => {
-      this.validarPassword = validarPassword;
-    };
-    ConfirmPassword = (validarPasswordConfirm) => {
-      this.validarPasswordConfirm = validarPasswordConfirm;
-    };
-    IdCard = (validarIdCard) => {
-      this.validarIdCard = validarIdCard;
+    getPassword = (Password) => {
+      this.setState({Password})
     };
 
-    BirthdayPicker = (validarBirthday) => {
-      this.validarBirthday = validarBirthday;
+    getConfirmPassword = (PasswordConfirm) => {
+      this.setState({PasswordConfirm});
+    };
+
+    getIdCard = (IdCard) => {
+      this.setState({IdCard});
+    };
+
+    getBirthdayPicker = (Birthday) => {
+      this.setState({Birthday})
+    };
+
+    getGenderPicker = (Gender) => {
+      this.setState({Gender})
     };    
 
-    validation = () => {      
-       let Username = this.validarUsername(),
-           Password = this.validarPassword(),
-           ConfirmPassword = this.validarPasswordConfirm(),
-           IdCard = this.validarIdCard(),
-           Birthday = this.validarBirthday(),
-           Email = this.validarEmail();
-               
-           if
-            (
-              Username !== null &&
-              Email !== null &&
-              Password !== null &&
-              ConfirmPassword !== null &&
-              Password === ConfirmPassword &&
-              IdCard !== null &&
-              Birthday !== null &&
-              Birthday !== false
-            )
-            {
-              console.log('Excelente')
-            }
-            else
-            {
-              if(Username === null){
-                alert('Username Incorrect');
-              }
+    getDriverClient = (DriverOrClient) => {
+      this.setState({DriverOrClient})
+    }
 
-              if(Email === null){
-                alert('Email Incorrect');
-              }
-
-              if(Password !== ConfirmPassword){
-                alert('Passwords do not match');
-              }
-              
-              if(IdCard === null){
-                alert('IdCard Incorrect');
-              }              
-
-              if(Birthday === false){
-                alert('Only people over 18 are allowed');
-              }
-
-              if(Birthday === null){
-                alert('Birthday Incorrect');
-              }
-
-            }
-    } 
+    validation = () => {
+      console.log('Username: '+this.state.Username)
+      console.log('Birthday: '+this.state.Birthday)
+      console.log(this.state.Gender)
+      console.log(this.state.DriverOrClient); 
+    }
 
   render() {
     return (
       <div className="container1">
         <div className="UserName">
-           <UserName shareMethods={this.Username}/>
+           <UserName getUsername={this.getUsername}/>
         </div>
         <div className="Email">
-          <Email shareMethods={this.Email}/>
+          <Email getEmail={this.getEmail}/>
         </div>
         <div className="PasswordRegister">
-          <PasswordRegister shareMethods={this.Password}/>
+          <PasswordRegister getPassword={this.getPassword}/>
         </div>
         <div className="ConfirmPassword">
-          <ConfirmPassword shareMethods={this.ConfirmPassword}/>
+          <ConfirmPassword getPassword={this.getConfirmPassword}/>
         </div>
         <div className="DriverClient">
-          <DriverClient/>
+          <DriverClient getDriverClient={this.getDriverClient}/>
         </div>
         <div className="IdCard">
-          <IdCard shareMethods={this.IdCard}/>
+          <IdCard getIdCard={this.getIdCard}/>
         </div>
         <div className="BirthdayPicker">
-          <BirthdayPicker shareMethods={this.BirthdayPicker}/>
+          <BirthdayPicker getBirthdayPicker={this.getBirthdayPicker}/>
         </div>
         <div className="GenderPicker">
-          <GenderPicker/>
+          <GenderPicker getGender={this.getGenderPicker}/>
         </div>
         <div className="ButtonSubmit">
           <ButtonSubmit handleClick={this.validation}/>

@@ -11,31 +11,23 @@ class IdCard extends Component {
 		return /^[A-Z]\d{4}\d{4}$/.test(value);
 	}
 
-	 validarDatos() {
-	 	let IdCard = document.getElementById('Idcard').value;
-	 	document.getElementById('Idcard').value = '';
-	 	if(this.validateIdCard(IdCard))
-	 	{
-	 		return IdCard;
-	 	}
-	 	else
-	 	{
-	 		return null;
+	 onChangeId = (event) => {
+	 	let IdCard = event.target.value;
+	 	if(this.validateIdCard(IdCard)){
+	 		this.props.getIdCard(IdCard);
+	 	}else{
+	 		this.props.getIdCard(null)
 	 	}
 	 }
-
-	componentDidMount(){
-		this.props.shareMethods(this.validarDatos.bind(this))
-	}
 
 
 	render(){
 		return (
 			<input
-				 id="Idcard"
 	             type="text"
 	             name="idcard"
 	             className="register-input"
+	             onChange={this.onChangeId}
 	             placeholder=" p.ej: V27838471"/>
 	            
 		)

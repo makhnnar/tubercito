@@ -10,30 +10,22 @@ class ConfirmPassword extends Component {
 		return /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{20,200}$/.test(value);
 	}
 
-	validarPassword(){
-		let password = document.getElementById('confirm-password').value;
-		document.getElementById('confirm-password').value = '';
-		if(this.validatePassword(password))
-		{
-			return password;
+	onChangeConfirmPassword = (event) => {
+		let password = event.target.value;
+		if(this.validatePassword(password)){
+			this.props.getPassword(password)
+		}else{
+			this.props.getPassword(null);
 		}
-		else
-		{
-			return null;
-		}
-	}
-
-	componentDidMount(){
-		this.props.shareMethods(this.validarPassword.bind(this))
 	}
 
 	render(){
 		return (
 			<input
-				  id="confirm-password"
 	              type="password"
 	              name="password"
 	              className="register-input"
+	              onChange={this.onChangeConfirmPassword}
 	              placeholder=" Confirm Password"/>     
 		)
 	  }

@@ -10,32 +10,22 @@ class UserName extends Component {
 		return /^[0-9a-zA-Z]+$/.test(value);
 	}
 
-	 validarDatos() {
-	 	let username = document.getElementById('UserName').value;
-	 	document.getElementById('UserName').value = '';
-	 	
-	 	if(this.validateUsername(username))
-	 	{
-	 		return username;
+	 onChangeText = (event) => {
+		let username = event.target.value;
+	 	if(this.validateUsername(username)){
+	 		this.props.getUsername(username);
+	 	}else{
+	 		this.props.getUsername(null);
 	 	}
-	 	else
-	 	{
-	 		return null;
-	 	}
-	 }
-
-	componentDidMount(){
-		this.props.shareMethods(this.validarDatos.bind(this))
 	}
-
 
 	render(){
 		return (
 			<input
-				 id="UserName"
 	             type="text"
 	             name="username"
 	             className="register-input"
+	             onChange={this.onChangeText}
 	             placeholder=" p.ej gustavob6"/>     
 		)
 	  }

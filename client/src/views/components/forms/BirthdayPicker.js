@@ -12,9 +12,7 @@ class BirthdayPicker extends Component {
 	}
 
 	validarFecha = (value) => {
-	
 		if (this.validateFecha(value)){
-
 			let fecha = new Date(value);
 			let fecha2 = fecha.getTime();
 			let fechaactual = new Date();
@@ -43,39 +41,27 @@ class BirthdayPicker extends Component {
 	}
 
 
-	 validarDatos() {
-	 	let Birthday = document.getElementById('Birth').value;
-	 	document.getElementById('Birth').value = '';
-
+	 onChangeBirth= (event) => {
+	 	let Birthday = event.target.value;
 	 	let result = this.validarFecha(Birthday);
 
-	 	if(result === null)
-	 	{
-	 		return null;
-	 	}
-	 	else if(result === false)
-	 	{
-	 		return false;
-	 	}
-	 	else
-	 	{
-	 		return Birthday;
+	 	if(result === null){
+	 		this.props.getBirthdayPicker(null)
+	 	}else if(result === false){
+	 		this.props.getBirthdayPicker(false)
+	 	}else{
+	 		this.props.getBirthdayPicker(Birthday)
 	 	}
 	 }
-
-	componentDidMount(){
-		this.props.shareMethods(this.validarDatos.bind(this))
-	}
-
 
 	render(){
 		return (
 			<input
-				 id="Birth"
 	             type="text"
 	             name="BirthdayPicker"
 	             className="register-input"
-	             placeholder=" p.ej: MMM-DDD-YYY"/>     
+	             placeholder=" p.ej: MMM-DDD-YYY"
+	             onChange={this.onChangeBirth}/>     
 		)
 	  }
 	}

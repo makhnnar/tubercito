@@ -10,30 +10,22 @@ class PasswordRegister extends Component {
 		return /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{20,200}$/.test(value);
 	}
 
-	validarPassword(){
-		let password = document.getElementById('password-register').value;
-		document.getElementById('password-register').value = '';
-		if(this.validatePassword(password))
-		{
-			return password;
+	onChangePassword = (event) => {
+		let password = event.target.value;
+		if(this.validatePassword(password)){
+			this.props.getPassword(password)
+		}else{
+			this.props.getPassword(null);
 		}
-		else
-		{
-			return null;
-		}
-	}
-
-	componentDidMount(){
-		this.props.shareMethods(this.validarPassword.bind(this))
 	}
 
 	render(){
 		return (
 			<input
-				  id="password-register"
 	              type="password"
 	              name="password"
 	              className="register-input"
+	              onChange={this.onChangePassword}
 	              placeholder=" P.ej: Los conejos vuelan 2 veces en carnaval"/>
 		)
 	  }
