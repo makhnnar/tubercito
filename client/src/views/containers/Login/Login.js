@@ -15,28 +15,17 @@ class Login extends React.Component {
       }
     }
 
-    Methods = (validarUsername) => {
-      this.validarUsername = validarUsername;
+    getUsername = (username) => {
+      console.log(username)
+      this.setState({username});
     };
 
-    acceptMethods = (validarPassword) => {
-      this.validarPassword = validarPassword;
+    getPassword = (password) => {
+      console.log(password)
+      this.setState({password})
     };
 
     validation = () => {
-      let username = this.validarUsername();
-      let password = this.validarPassword();
-        
-      if(username === null){
-        alert('Username or Email Incorrect')
-      }
-
-      if(password === null){
-        alert('Password Incorrect')
-      }
-
-      this.state.username = username;
-      this.state.password = password;
 
     }
 
@@ -44,10 +33,10 @@ class Login extends React.Component {
     return (
       <div className="container">
         <div className="username">
-         <UserNameLogin shareMethods={this.Methods}/>   
+         <UserNameLogin getUsername={this.getUsername}/>   
         </div>
         <div className="password">
-          <Password shareMethod={this.acceptMethods}/>
+          <Password getPassword={this.getPassword}/>
         </div>
         <div className="login-btn">
           <ButtonLogin handleClick={this.validation}/>
