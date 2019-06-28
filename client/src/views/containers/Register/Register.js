@@ -1,5 +1,7 @@
 import React from 'react';
 import UserName from '../../components/forms/UserName';
+import FirstName from '../../components/forms/FirstName';
+import LastName from '../../components/forms/LastName';
 import Email from '../../components/forms/Email';
 import PasswordRegister from '../../components/forms/PasswordRegister';
 import ConfirmPassword from '../../components/forms/ConfirmPassword';
@@ -15,17 +17,26 @@ class Register extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        FirstName:'',
+        LastName:'',
         Username:'',
         Email:'',
         Password:'',
         PasswordConfirm:'',
         IdCard:'',
         Birthday:'',
-        Gender:'J',
+        Gender:'',
         DriverOrClient:''
       }
     }
 
+    getFirstName = (FirstName) => {
+      this.setState({FirstName}) 
+    };
+
+    getLastName = (LastName) => {
+      this.setState({LastName}) 
+    };
     getUsername = (Username) => {
       this.setState({Username}) 
     };
@@ -66,6 +77,12 @@ class Register extends React.Component {
   render() {
     return (
       <div className="container1">
+        <div className="first-name">
+           <FirstName getFirstName={this.getFirstName}/>
+        </div>
+        <div className="last-name">
+           <LastName getLastName={this.getLastName}/>
+        </div>
         <div className="UserName">
            <UserName getUsername={this.getUsername}/>
         </div>

@@ -16,17 +16,16 @@ class Login extends React.Component {
     }
 
     getUsername = (username) => {
-      console.log(username)
       this.setState({username});
     };
 
     getPassword = (password) => {
-      console.log(password)
       this.setState({password})
     };
 
-    validation = () => {
-
+    validation = () => {      
+      console.log(this.state.username)
+      console.log(this.state.password)
     }
 
   render() {
