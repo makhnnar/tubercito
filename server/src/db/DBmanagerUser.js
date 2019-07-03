@@ -48,7 +48,8 @@ var Dbuser = function(){
     Database.query(
       sql,
       [
-        description
+        username,
+        password
       ],
       () => {
         cb(true,null);
@@ -60,6 +61,114 @@ var Dbuser = function(){
     );
   };
   
+  this.login = function(username, password, cb) {
+    console.log('Revisara si existe el usuario');
+    var sql = 'SELECT * FROM user WHERE username = $1, password = $2 RETURNING id_persona';
+    Database.query(
+      sql,
+      [
+        username,
+        password
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+  this.loginperson = function(id_persona, cb) {
+    console.log('Buscar datos de persona');
+    var sql = 'SELECT * FROM user WHERE username = $1, password = $2 RETURNING *';
+    Database.query(
+      sql,
+      [
+        id_persona
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.logout = function(token, cb) {
+    console.log('Cerrando sesion');
+    var sql = '';
+    Database.query(
+      sql,
+      [
+        token
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.user_address = function(token, cb) {
+    console.log('Direccion del usuario');
+    var sql = '';
+    Database.query(
+      sql,
+      [
+        token
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.user_vehicles = function(token, cb) {
+    console.log('Direccion del usuario');
+    var sql = '';
+    Database.query(
+      sql,
+      [
+        token
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.user_phones = function(token, cb) {
+    console.log('Direccion del usuario');
+    var sql = '';
+    Database.query(
+      sql,
+      [
+        token
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
 }
 
 module.exports = function(){
