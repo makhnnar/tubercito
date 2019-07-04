@@ -4,13 +4,13 @@ import React from 'react';
 const ItemHistory = ({handleClick}) => {
 
 	return (
-		<button
+		<div
               type="submit"
               className="menu-btn"
               onClick={handleClick}
               >
             History
-        </button>
+        </div>
 	)
 }
 

@@ -3,13 +3,13 @@ import React from 'react';
 const ItemHome = ({handleClick}) => {
 
 	return (
-		<button
+		<div
               type="submit"
               className="menu-btn"
               onClick={handleClick}
               >
             Home
-        </button>
+        </div>
 	)
 }
 

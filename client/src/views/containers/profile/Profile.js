@@ -8,9 +8,12 @@ import IdCard from '../../components/forms/IdCard';
 import ButtonSubmit from '../../components/forms/ButtonSubmit';
 import GenderPicker from '../../components/forms/GenderPicker';
 import BirthdayPicker from '../../components/forms/BirthdayPicker';
-import ButtonUpdate from '../../components/forms/ButtonUpdate'
+import ListAddress from '../../components/Address/Address';
+import ListNumeric from '../../components/telephone/Telephone';
+import ButtonUpdate from '../../components/forms/ButtonUpdate';
+import ButtonFlotant from '../../components/forms/ButtonFlotant';
 import Menu from '../menu/Menu';
-import './Profile.css'
+import './Profile.css';
 
 class Profile extends React.Component {
 
@@ -50,7 +53,7 @@ class Profile extends React.Component {
     getBirthdayPicker = (Birthday) => {
       this.setState({Birthday})
     };
-
+    
     getGenderPicker = (Gender) => {
       this.setState({Gender})
     };    
@@ -58,7 +61,6 @@ class Profile extends React.Component {
     getDriverClient = (DriverOrClient) => {
       this.setState({DriverOrClient})
     }
-
 
   render() {
     return (
@@ -77,12 +79,19 @@ class Profile extends React.Component {
         <div className="Account-data">
           <div className="camp-text1">
              <UserName getUsername={this.getUsername}/>
-             <Email getEmail={this.getEmail}/> 
+             <Email getEmail={this.getEmail}/>
           </div>
         </div>
 
-        <div className="ButtonUpdate">
+        <div className="list-profile">
+          <div className="camp-text3">
+            <ListAddress/>
+            <ListNumeric/>
+          </div>
+        </div>
+        <div className="Buttons">
           <ButtonUpdate />
+          <ButtonFlotant/>
         </div>
       </div>
     );

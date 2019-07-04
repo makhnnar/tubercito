@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../../components/menu/Header';
 import ItemWallet from '../../components/menu/ItemWallet';
 import ItemHistory from '../../components/menu/ItemHistory';
 import ItemHome from '../../components/menu/ItemHome';
@@ -16,6 +17,9 @@ class Menu extends React.Component {
   render() {
     return (
       <div className="menu-container">
+        <div className="Header">
+          <Header/>
+        </div>
         <div className="item-home">
             <ItemHome/>
         </div>
