@@ -1,0 +1,25 @@
+.container1{
+  margin:50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+}
+
+.register-input{
+  display: flex;
+  width:300px;
+  height:50px;
+  margin: 10px;
+  border-radius:10px;
+  flex-direction: column;
+  border-color:black;
+}
+
+.register-btn{
+  height: 50px;
+  width: 500px;
+  margin-top:10px;
+  border-radius:10px;
+  border-color: black;
+}
