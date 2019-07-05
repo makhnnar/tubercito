@@ -4,12 +4,13 @@ import Likes from '../../components/Item/Likes';
 import DisLikes from '../../components/Item/DisLikes';
 import Distance from '../../components/Item/Distance';
 import Button from '../../components/Item/Button';
-import CurrentPosition from '../../components/Item/CurrentPosition';
-import Vehicle from '../../components/Item/Vehicle';
+import DestinationUser from '../../components/Item/DestinationUser';
+import TravelTime from '../../components/Item/TravelTime';
+import OriginUser from '../../components/Item/OriginUser';
 import PickUpTime from '../../components/Item/PickUpTime';
-import './ItemClient.css';
+import './ItemDriver.css';
 
-class ItemClient extends React.Component {
+class ItemDriver extends React.Component {
 
     constructor(props) {
       super(props);
@@ -27,10 +28,11 @@ class ItemClient extends React.Component {
            <Distance/>
         </div>
         <div className="item-2">
-          <CurrentPosition/>
-          <Vehicle/>
+          <DestinationUser/>
+          <OriginUser/>
         </div>
         <div className="item-2">
+          <TravelTime/>
           <PickUpTime/>
         </div>
         <div className="btn-item">
@@ -41,4 +43,4 @@ class ItemClient extends React.Component {
   }
 }
 
-export default ItemClient;
+export default ItemDriver;
