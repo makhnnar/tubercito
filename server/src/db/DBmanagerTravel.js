@@ -1,24 +1,44 @@
-const Database = require('./DBmanager');
+const manager = require('./DBmanager');
 
 var Dbtravel = function(){
 
-    this.travel_request = function(token, cb) {
-        console.log('Obtener direccion');
-        var sql = '';
-        Database.query(
-          sql,
-          [
-            token
-          ],
-          () => {
-            cb(true,null);
-          },
-          (res) => {
-            console.log(JSON.stringify(res));
-            cb(null,res);
-          }
-        );
-      };
+  this.travelrequest = function(token_temporal, cb) {
+    console.log('');
+    var sql = '';
+    manager.query(
+      sql,
+      [
+        token_temporal
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.travelrequest = function(token_temporal, cb) {
+    console.log('');
+    var sql = '';
+    manager.query(
+      sql,
+      [
+        token_temporal
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  
 
 }
 

@@ -1,4 +1,4 @@
-const Database = require('./DBmanager');
+const manager = require('./DBmanager');
 
 var Dbwallet = function(){
 

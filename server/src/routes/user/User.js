@@ -15,7 +15,7 @@ var RouterUser = function(){
         if(error){
           res.send({
             status:'error',
-            data:'no created data'
+            data:'no created type user'
           });
         }else{
           manager.createperson(
@@ -24,27 +24,29 @@ var RouterUser = function(){
             valor.email,
             valor.gender,
             valor.birthday,
+            result.id_user_type,
             (error,result) => {
               if(error){
                 res.send({
                   status:'error',
-                  data:'no created data'
+                  data:'no created person'
                 });
               }else{
                 manager.createuser(
                   valor.username,
                   valor.password,
-                  result[0].id_persona,
+                  result[0].id_person,
+                  result.id_user_type,
                   (error,result) => {
                     if(error){
                       res.send({
                         status:'error',
-                        data:'no created data'
+                        data:'no created user'
                       });
                     }else{
                       res.send({
                         status:'success',
-                        data:'data created'
+                        data:'User created'
                       });
                     }
                   }
@@ -75,7 +77,7 @@ var RouterUser = function(){
           });
         }else{
           manager.loginperson(
-            result.id_persona,
+            result.id_person,
             (error,result) => {
               if(error){
                 res.send({
@@ -104,7 +106,7 @@ var RouterUser = function(){
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
     manager.logout(
-      valor.token,
+      valor.token_temporal,
       (error,result) => {
         if(error){
           res.send({
@@ -114,9 +116,8 @@ var RouterUser = function(){
         }else{
           res.send({
             status:'success',
-            msg:'enviando usario',
-            data:result
-            });
+            msg:'Logout'
+          });
         }
       }
     );
@@ -129,8 +130,8 @@ var RouterUser = function(){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    manager.user_address(
-      valor.token,
+    manager.buscaruser(
+      valor.token_temporal,
       (error,result) => {
         if(error){
           res.send({
@@ -138,11 +139,47 @@ var RouterUser = function(){
             data:'No se pudo acceder'
           });
         }else{
-          res.send({
-            status:'success',
-            msg:'enviando usario',
-            data:result
-            });
+          manager.buscarperson(
+            result.id_user,
+            (error,result) => {
+              if(error){
+                res.send({
+                  status:'error',
+                  data:'no created data'
+                });
+              }else{
+                manager.addressid(
+                  result.id_person,
+                  (error,result) => {
+                    if(error){
+                      res.send({
+                        status:'error',
+                        data:'no created data'
+                      });
+                    }else{
+                      manager.address(
+                        result.id_address,
+                        (error,result) => {
+                          if(error){
+                            res.send({
+                              status:'error',
+                              data:'no created data'
+                            });
+                          }else{
+                            res.send({
+                              status:'success',
+                              msj:'Address',
+                              data:result
+                            });
+                          }
+                        }
+                      );
+                    }
+                  }
+                );
+              }
+            }
+          );
         }
       }
     );
@@ -155,8 +192,8 @@ var RouterUser = function(){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    manager.user_vehicle(
-      valor.token,
+    manager.buscaruser(
+      valor.token_temporal,
       (error,result) => {
         if(error){
           res.send({
@@ -164,11 +201,47 @@ var RouterUser = function(){
             data:'No se pudo acceder'
           });
         }else{
-          res.send({
-            status:'success',
-            msg:'enviando usario',
-            data:result
-            });
+          manager.buscarperson(
+            result.id_user,
+            (error,result) => {
+              if(error){
+                res.send({
+                  status:'error',
+                  data:'no created data'
+                });
+              }else{
+                manager.vehicleid(
+                  result.id_person,
+                  (error,result) => {
+                    if(error){
+                      res.send({
+                        status:'error',
+                        data:'no created data'
+                      });
+                    }else{
+                      manager.vehicle(
+                        result.id_address,
+                        (error,result) => {
+                          if(error){
+                            res.send({
+                              status:'error',
+                              data:'no created data'
+                            });
+                          }else{
+                            res.send({
+                              status:'success',
+                              msj:'Address',
+                              data:result
+                            });
+                          }
+                        }
+                      );
+                    }
+                  }
+                );
+              }
+            }
+          );
         }
       }
     );
@@ -181,8 +254,8 @@ var RouterUser = function(){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    manager.user_phones(
-      valor.token,
+    manager.buscaruser(
+      valor.token_temporal,
       (error,result) => {
         if(error){
           res.send({
@@ -190,76 +263,8 @@ var RouterUser = function(){
             data:'No se pudo acceder'
           });
         }else{
-          res.send({
-            status:'success',
-            msg:'enviando usario',
-            data:result
-            });
-        }
-      }
-    );
-  }
-
-  /*
-  this.postlogin = function (req,res){
-    console.log(' ');
-    console.log('valores: '+JSON.stringify(req.body));
-    console.log(' ');
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    let valor = req.body;
-    manager.login(
-      valor.email,
-      valor.password,
-      (error,result) => {
-        if(error){
-          res.send({
-            status:'error',
-            data:'No se pudo acceder'
-          });
-        }else{
-          res.send({
-          status:'success',
-          msg:'enviando usario',
-          data:result
-          });
-        }
-      }
-    );
-  });
-  */
-
-}
-
-module.exports = function(){
-  var instancia = new RouterUser();
-  return instancia;
-};
-
-/* 
-
-this.postCreateuser = function(req,res){
-    console.log(' ');
-    console.log('Valores: '+JSON.stringify(req.body));
-    console.log(' ');
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    let valor = req.body;
-    manager.typeuser(
-      valor.description,
-      (error,result) => {
-        if(error){
-          res.send({
-            status:'error',
-            data:'no created data'
-          });
-        }else{
-          manager.createperson(
-            valor.firts_name,
-            valor.last_name,
-            valor.email,
-            valor.gender,
-            valor.birthday,
+          manager.buscarperson(
+            result.id_user,
             (error,result) => {
               if(error){
                 res.send({
@@ -267,10 +272,8 @@ this.postCreateuser = function(req,res){
                   data:'no created data'
                 });
               }else{
-                manager.createuser(
-                  valor.username,
-                  valor.password,
-                  result[0].id_persona,
+                manager.phoneid(
+                  result.id_person,
                   (error,result) => {
                     if(error){
                       res.send({
@@ -278,10 +281,23 @@ this.postCreateuser = function(req,res){
                         data:'no created data'
                       });
                     }else{
-                      res.send({
-                        status:'success',
-                        data:'data created'
-                      });
+                      manager.phone(
+                        result.id_telephone,
+                        (error,result) => {
+                          if(error){
+                            res.send({
+                              status:'error',
+                              data:'no created data'
+                            });
+                          }else{
+                            res.send({
+                              status:'success',
+                              msj:'Address',
+                              data:result
+                            });
+                          }
+                        }
+                      );
                     }
                   }
                 );
@@ -293,4 +309,9 @@ this.postCreateuser = function(req,res){
     );
   }
 
-*/
+}
+
+module.exports = function(){
+  var instancia = new RouterUser();
+  return instancia;
+};
