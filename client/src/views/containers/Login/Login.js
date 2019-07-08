@@ -3,6 +3,8 @@ import UserNameLogin from '../../components/forms/UserNameLogin';
 import Password from '../../components/forms/Password';
 import ButtonLogin from '../../components/forms/ButtonLogin';
 import ButtonFlotant from '../../components/forms/ButtonFlotant';
+import Icon from '@material-ui/core/Icon';
+import {AccessAlarm,ThreeDRotation,Accessibility} from '@material-ui/icons';
 import './Login.css';
 
 class Login extends React.Component {
@@ -10,23 +12,22 @@ class Login extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        username:'J',
+        username:'',
         password:''
       }
     }
 
     getUsername = (username) => {
-      console.log(username)
       this.setState({username});
     };
 
     getPassword = (password) => {
-      console.log(password)
       this.setState({password})
     };
 
-    validation = () => {
-
+    validation = () => {      
+      console.log(this.state.username)
+      console.log(this.state.password)
     }
 
   render() {
@@ -43,6 +44,10 @@ class Login extends React.Component {
         </div>
         <div className="flotant-btn">
           <ButtonFlotant/>
+          <Icon>add_circle</Icon>
+          <ThreeDRotation/>
+          <AccessAlarm/>
+          <Accessibility/>
         </div>
       </div>
     );

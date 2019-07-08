@@ -1,0 +1,24 @@
+.Header{
+	align-items: center;
+	margin-top:20px;
+	margin-left:80px;
+}
+
+.Photo{
+	border-radius: 30px;
+}
+
+.menu-btn{
+	display:flex;
+    justify-content:center;
+    align-items: center;
+	text-align: center;
+	background:#28C7D7;
+	margin:20px;
+	height: 50px;
+  	width: 250px;
+	border-radius: 112px 0px 113px 0px;
+	-moz-border-radius: 112px 0px 113px 0px;
+	-webkit-border-radius: 112px 0px 113px 0px;
+	border: 0px solid #000000;
+}

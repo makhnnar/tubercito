@@ -1,0 +1,43 @@
+.profile-container{
+	margin:50px;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	flex-direction:column;
+}
+
+.camp-text2{
+	margin-top: 50px;
+	margin-left:300px;
+	margin-right:200px;
+	display: inline-flex;
+}
+
+.camp-text3{
+	margin-top: 50px;
+	margin-left:200px;
+	margin-right:200px;
+	display: inline-flex;
+}
+
+.camp-text1{
+	margin-top: 50px;
+	margin-left:185px;
+	margin-right:200px;
+	display: inline-flex;
+}
+
+.camp-text{
+	margin-top: 50px;
+	margin-left:300px;
+	margin-right:200px;
+	display: inline-flex;
+}
+
+.profile-btn{
+  height: 50px;
+  width: 300px;
+  margin-top:50px;
+  border-radius:10px;
+  border-color: black;
+}
