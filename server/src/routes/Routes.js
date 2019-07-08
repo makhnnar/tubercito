@@ -1,5 +1,5 @@
 const express = require('express');
-const RouteUser =require ('./user/User');
+const RouterUser = require('./user/User');
 const router = express.Router();
 
 //export default router;
@@ -8,45 +8,51 @@ const router = express.Router();
 // Set default API response
 
 // Contact routes
+
+let userInstance = new RouterUser();
+
+//userInstance.test();
+
 router.route('/signup')
     .post(
         function(req,res){
-            RouteUser.postCreateuser(req,res);
+            console.log('body: '+JSON.stringify(req.body));
+            userInstance.postCreateuser(req,res);
         }
     );
 
 router.route('/login')
     .post(
         function(req,res){
-            RouteUser.postlogin(req,res);
+            userInstance.postlogin(req,res);
         }
 );
 
 router.route('/logout')
     .post(
         function(req,res){
-            RouteUser.postlogout(req,res);
+            userInstance.postlogout(req,res);
         }
 );
 
 router.route('/user_address')
     .post(
         function(req,res){
-            RouteUser.postuseraddress(req,res);
+            userInstance.postuseraddress(req,res);
         }
 );
 
 router.route('/user_vehicles')
     .post(
         function(req,res){
-            RouteUser.postuservehicles(req,res);
+            userInstance.postuservehicles(req,res);
         }
 );
 
 router.route('/user_phones')
     .post(
         function(req,res){
-            RouteUser.postuserphones(req,res);
+            userInstance.postuserphones(req,res);
         }
 );
 

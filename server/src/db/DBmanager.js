@@ -1,4 +1,3 @@
-
 var Database = function(){
 
   const { Client } = require('pg')
@@ -6,7 +5,7 @@ var Database = function(){
   this.connectionData = {
     user: 'postgres',
     host: 'localhost',
-    database: 'users',
+    database: 'ubercito',
     password: 'root',
     port: 5432,
   }
@@ -18,8 +17,9 @@ var Database = function(){
     this.cliente = new Client(this.connectionData);
     this.cliente.connect();
   };
-
+  
   this.query = function(sql,params,cbError,cbSuccess){
+    console.log('hola');
     let consulta = {
       text: sql,
       values: params,
