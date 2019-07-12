@@ -66,33 +66,29 @@ class Profile extends React.Component {
     return (
       <div className="profile-container">
         <div className="Personal-Data">
-          <div className="camp-text">
-          <FirstName getFirstName={this.getFirstName}/>
-          <LastName getLastName={this.getLastName}/>
-        </div>
-        <div className="camp-text2">
-          <IdCard getIdCard={this.getIdCard}/> 
-          <BirthdayPicker getBirthdayPicker={this.getBirthdayPicker}/>
-        </div>   
+          <div className="camp-text1">
+            <FirstName getFirstName={this.getFirstName}/>
+            <LastName getLastName={this.getLastName}/>
+          </div>
+          
+          <div className="camp-text2">
+            <IdCard getIdCard={this.getIdCard}/> 
+            <BirthdayPicker getBirthdayPicker={this.getBirthdayPicker}/>
+          </div>
         </div>
 
         <div className="Account-data">
-          <div className="camp-text1">
              <UserName getUsername={this.getUsername}/>
              <Email getEmail={this.getEmail}/>
-          </div>
         </div>
 
         <div className="list-profile">
-          <div className="camp-text3">
             <ListAddress/>
             <ListNumeric/>
-          </div>
         </div>
-        <div className="Buttons">
-          <ButtonUpdate />
+
+          <ButtonUpdate/>
           <ButtonFlotant/>
-        </div>
       </div>
     );
   }

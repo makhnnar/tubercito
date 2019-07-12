@@ -1,43 +1,54 @@
 .profile-container{
-	margin:50px;
   	display: flex;
+  	flex-grow:1;
+  	min-height: 100vh;
   	justify-content: center;
   	align-items: center;
   	flex-direction:column;
 }
 
-.camp-text2{
-	margin-top: 50px;
-	margin-left:300px;
-	margin-right:200px;
-	display: inline-flex;
-}
-
-.camp-text3{
-	margin-top: 50px;
-	margin-left:200px;
-	margin-right:200px;
-	display: inline-flex;
+.Personal-Data{
+	display:flex;
+	flex-grow: 1;
+	flex-direction: column;
 }
 
 .camp-text1{
-	margin-top: 50px;
-	margin-left:185px;
-	margin-right:200px;
-	display: inline-flex;
+	display: flex;
+	display: inline-block;
+	flex-grow: 1;
+	flex-direction: row;
 }
 
-.camp-text{
-	margin-top: 50px;
-	margin-left:300px;
-	margin-right:200px;
-	display: inline-flex;
+.camp-text2{
+	display: flex;
+	display: inline-block;
+	flex-grow: 1;
+	flex-direction: row;
 }
+
+.Account-data{
+	display: flex;
+	display: inline-block;
+	flex-grow: 1;
+	flex-direction: row;
+}
+
+.list-profile{
+	display: flex;
+	flex-grow: 1;
+	flex-direction: row;
+}
+
+/*.Buttons{
+	display: flex;
+	flex-grow:1;
+	flex-direction: row;
+}*/
 
 .profile-btn{
+  margin: 5px;
   height: 50px;
-  width: 300px;
-  margin-top:50px;
+  width: 500px;
   border-radius:10px;
-  border-color: black;
 }

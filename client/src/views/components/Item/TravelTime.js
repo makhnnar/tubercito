@@ -3,7 +3,7 @@ import React from 'react';
 const TravelTime = () => {
 
 	return (
-		<div className="item3">
+		<div className="item2">
 			Travel Time
 		</div>	
 	)

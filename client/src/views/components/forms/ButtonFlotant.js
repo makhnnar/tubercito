@@ -5,7 +5,7 @@ const ButtonFlotant = () => {
 	return (
 		<button 
 			  title="Join Us"
-              id="flotant"					 		
+              className="flotant"					 		
               >
             +
         </button>

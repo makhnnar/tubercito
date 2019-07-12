@@ -1,74 +1,64 @@
 .container-item{
-	margin:100px;
-	margin-left:300px;
-	width: 830px;
-	height: 400px;
-	border-color:black;
-	border-radius: 3px;
+	display:flex;
+	flex:1;
+	min-height: 100vh;
 	background:#D8E1E2;
+	flex-direction:column;
 }
 
 .item-1{
-	display: flex;
-	display: inline-flex;
+	display:flex;
+	flex:1;
+	flex-direction:row;
 }
 
 .item1{
 	display: flex;
+	flex:1;
 	text-align: center;
 	align-items: center;
 	justify-content: center;
-	margin: 40px;
-	height: 50px;
-	width: 100px;
-	border-radius: 10px;
 	background:#AAC8CB; 
 }
 
 .item-2{
-	display: flex;
-	display: inline-block;
+	display:flex;
+	flex:2;
+	flex-direction:row;
+}
+
+.item-21{
+	display:flex;
+	flex:2;
+	flex-direction:column;
+}
+
+.item-211{
+	display:flex;
+	flex:1;
+	flex-direction:row;
+}
+
+.item-212{
+	display:flex;
+	flex:1;
+	flex-direction:row;
 }
 
 .item2{
 	display: flex;
+	flex:1;
 	text-align: center;
-	align-items: center;
 	justify-content: center;
-	margin: 40px;
-	height: 50px;
-	width: 280px;
-	border-radius: 5px;
 	background:#AAC8CB;
 }
 
-.item-3{
-	display: flex;
-	display: inline-flex;
-}
-
-.item3{
-	display: flex;
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-	margin: 40px;
-	height: 50px;
-	width: 180px;
-	border-radius: 5px;
-	background:#AAC8CB;
-}
-
-.item-btn{
-	display: flex;
+.btn-item{
+	display:flex;
+	flex:1;
 	align-items: center;
 	justify-content: center;
 	background:green;
-	margin-left: 650px;
-	margin-top:-140px;
-	width:150px;
-	height: 70px;
-	border-radius: 3px;
 }
 
 .btn{
@@ -76,10 +66,8 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	height:30px; 
-	width: 100px;
+	flex:1;
 	background:#AAC8CB; 
-	border-radius: 5px;
 }
 
 

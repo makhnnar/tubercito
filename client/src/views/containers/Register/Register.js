@@ -77,36 +77,33 @@ class Register extends React.Component {
   render() {
     return (
       <div className="container1">
-        <div className="first-name">
+        <div className="first-names">
            <FirstName getFirstName={this.getFirstName}/>
-        </div>
-        <div className="last-name">
            <LastName getLastName={this.getLastName}/>
         </div>
-        <div className="UserName">
+        <div className="UsernameEmail">
            <UserName getUsername={this.getUsername}/>
-        </div>
-        <div className="Email">
           <Email getEmail={this.getEmail}/>
         </div>
+
         <div className="PasswordRegister">
           <PasswordRegister getPassword={this.getPassword}/>
-        </div>
-        <div className="ConfirmPassword">
           <ConfirmPassword getPassword={this.getConfirmPassword}/>
         </div>
+
         <div className="DriverClient">
           <DriverClient getDriverClient={this.getDriverClient}/>
         </div>
-        <div className="IdCard">
-          <IdCard getIdCard={this.getIdCard}/>
-        </div>
-        <div className="BirthdayPicker">
-          <BirthdayPicker getBirthdayPicker={this.getBirthdayPicker}/>
-        </div>
-        <div className="GenderPicker">
+
+        <div className="Gender">
           <GenderPicker getGender={this.getGenderPicker}/>
         </div>
+
+        <div className="Picker-ID">
+          <BirthdayPicker getBirthdayPicker={this.getBirthdayPicker}/>
+          <IdCard getIdCard={this.getIdCard}/>
+        </div>
+
         <div className="ButtonSubmit">
           <ButtonSubmit handleClick={this.validation}/>
         </div>

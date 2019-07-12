@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Likes = () => {
+const IconText = () => {
 
 	return (
 		<div className="item1">
-			Likes
+			Icon+Text
 		</div>	
 	)
 }
 
-export default Likes;
+export default IconText;

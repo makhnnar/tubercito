@@ -17,21 +17,11 @@ class Menu extends React.Component {
   render() {
     return (
       <div className="menu-container">
-        <div className="Header">
           <Header/>
-        </div>
-        <div className="item-home">
-            <ItemHome/>
-        </div>
-        <div className="item-wallet">
+          <ItemHome/>
           <ItemWallet/>
-        </div>
-        <div className="item-history">
           <ItemHistory/>
-        </div>
-        <div className="item-logout">
           <ItemLogout/>
-        </div>
       </div>
     );
   }

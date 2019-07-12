@@ -1,8 +1,6 @@
 import React from 'react';
 import Username from '../../components/Item/Username';
-import Likes from '../../components/Item/Likes';
-import DisLikes from '../../components/Item/DisLikes';
-import Distance from '../../components/Item/Distance';
+import IconText from '../../components/Item/IconText';
 import Button from '../../components/Item/Button';
 import DestinationUser from '../../components/Item/DestinationUser';
 import TravelTime from '../../components/Item/TravelTime';
@@ -23,20 +21,24 @@ class ItemDriver extends React.Component {
       <div className="container-item">
         <div className="item-1">
            <Username/>
-           <Likes/>
-           <DisLikes/>
-           <Distance/>
+           <IconText/>
+           <IconText/>
+           <IconText/>
         </div>
         <div className="item-2">
-          <DestinationUser/>
-          <OriginUser/>
-        </div>
-        <div className="item-2">
-          <TravelTime/>
-          <PickUpTime/>
-        </div>
-        <div className="btn-item">
-          <Button/>
+          <div className="item-21">
+            <div className="item-211">
+              <DestinationUser/>
+              <OriginUser/>
+            </div>
+            <div className="item-212">
+              <TravelTime/>
+              <PickUpTime/>
+            </div>
+          </div>
+          <div className="btn-item">
+            <Button/>
+          </div>
         </div>
       </div>
     );

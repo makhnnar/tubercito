@@ -6,7 +6,7 @@ import Login from './views/containers/Login/Login';
 import Menu from './views/containers/menu/Menu';
 import Profile from './views/containers/profile/Profile';
 import Item1 from './views/containers/ItemClient/ItemClient';
-import Item2 from './views/containers/ItemDriver/ItemDriver'
+import Item2 from './views/containers/ItemDriver/ItemDriver';
 
 function App() {
   return (
