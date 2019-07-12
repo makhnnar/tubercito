@@ -1,0 +1,54 @@
+.profile-container{
+  	display: flex;
+  	flex-grow:1;
+  	min-height: 100vh;
+  	justify-content: center;
+  	align-items: center;
+  	flex-direction:column;
+}
+
+.Personal-Data{
+	display:flex;
+	flex-grow: 1;
+	flex-direction: column;
+}
+
+.camp-text1{
+	display: flex;
+	display: inline-block;
+	flex-grow: 1;
+	flex-direction: row;
+}
+
+.camp-text2{
+	display: flex;
+	display: inline-block;
+	flex-grow: 1;
+	flex-direction: row;
+}
+
+.Account-data{
+	display: flex;
+	display: inline-block;
+	flex-grow: 1;
+	flex-direction: row;
+}
+
+.list-profile{
+	display: flex;
+	flex-grow: 1;
+	flex-direction: row;
+}
+
+/*.Buttons{
+	display: flex;
+	flex-grow:1;
+	flex-direction: row;
+}*/
+
+.profile-btn{
+  margin: 5px;
+  height: 50px;
+  width: 500px;
+  border-radius:10px;
+}
