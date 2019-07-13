@@ -33,22 +33,10 @@ class Login extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="username">
          <UserNameLogin getUsername={this.getUsername}/>   
-        </div>
-        <div className="password">
-          <Password getPassword={this.getPassword}/>
-        </div>
-        <div className="login-btn">
+          <Password getPassword={this.getPassword}/>  
           <ButtonLogin handleClick={this.validation}/>
-        </div>
-        <div className="flotant-btn">
           <ButtonFlotant/>
-          <Icon>add_circle</Icon>
-          <ThreeDRotation/>
-          <AccessAlarm/>
-          <Accessibility/>
-        </div>
       </div>
     );
   }

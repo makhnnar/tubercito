@@ -5,7 +5,7 @@ const ButtonLogin = ({handleClick}) => {
 	return (
 		<button
               type="submit"
-              className="login-btn"
+              className="btn-login"
               onClick={handleClick}
               >
             Login
