@@ -1,0 +1,44 @@
+.wallet-container{
+	display: flex;
+	flex: 1;
+	min-height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.balance{
+	display: flex;
+	align-items: center;
+	width: 1200px;
+	height: 100px;
+	margin: 3px;
+	border-radius: 10px;
+	background: orange;
+}
+
+.balance-cont{
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+}
+
+.cont-1{
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.act-1{
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	height: 300px;
+	width: 300px;
+	background: red;
+	margin: 25px;
+	border-radius: 10px;
+}

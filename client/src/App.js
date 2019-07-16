@@ -7,11 +7,15 @@ import Menu from './views/containers/menu/Menu';
 import Profile from './views/containers/profile/Profile';
 import Item1 from './views/containers/ItemClient/ItemClient';
 import Item2 from './views/containers/ItemDriver/ItemDriver';
+import Wallet from './views/containers/wallet/Wallet';
+import Chat from './views/containers/chat/Chat';
 
 function App() {
   return (
     <BrowserRouter>
         <Switch>
+          <Route path="/chat" component={Chat}/>
+          <Route path="/wallet" component={Wallet}/>
           <Route path="/item2" component={Item2}/>
           <Route path="/item1" component={Item1}/>
           <Route path="/profile" component={Profile}/>
