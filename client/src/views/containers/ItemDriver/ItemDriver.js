@@ -2,9 +2,8 @@ import React from 'react';
 import Username from '../../components/Item/Username';
 import IconText from '../../components/Item/IconText';
 import Button from '../../components/Item/Button';
-import DestinationUser from '../../components/Item/DestinationUser';
 import TravelTime from '../../components/Item/TravelTime';
-import OriginUser from '../../components/Item/OriginUser';
+import OnlyText from '../../components/forms/OnlyText';
 import PickUpTime from '../../components/Item/PickUpTime';
 import './ItemDriver.css';
 
@@ -28,8 +27,8 @@ class ItemDriver extends React.Component {
         <div className="item-2">
           <div className="item-21">
             <div className="item-211">
-              <DestinationUser/>
-              <OriginUser/>
+              <OnlyText/>
+              <OnlyText/>
             </div>
             <div className="item-212">
               <TravelTime/>

@@ -9,11 +9,13 @@ import Item1 from './views/containers/ItemClient/ItemClient';
 import Item2 from './views/containers/ItemDriver/ItemDriver';
 import Wallet from './views/containers/wallet/Wallet';
 import Chat from './views/containers/chat/Chat';
+import Home from './views/containers/Home/Home';
 
 function App() {
   return (
     <BrowserRouter>
         <Switch>
+          <Route path="/home" component={Home}/>
           <Route path="/chat" component={Chat}/>
           <Route path="/wallet" component={Wallet}/>
           <Route path="/item2" component={Item2}/>

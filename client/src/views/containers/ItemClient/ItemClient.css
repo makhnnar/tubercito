@@ -2,7 +2,7 @@
 	display:flex;
 	flex:1;
 	min-height: 100vh;
-	background:#D8E1E2;
+	background:white;
 	flex-direction:column;
 }
 
@@ -12,13 +12,28 @@
 	flex-direction:row;
 }
 
+.icon-text{
+	display: flex;
+	flex:1;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	padding: 20px;
+	background-color: #d9edc2;
+	border: 1px solid #b2ce96;
+}
+
 .item1{
 	display: flex;
 	flex:1;
 	text-align: center;
 	align-items: center;
 	justify-content: center;
-	background:#AAC8CB; 
+	overflow: hidden;
+	padding: 20px;
+	background-color: #d9edc2;
+	border: 1px solid #b2ce96; 
 }
 
 .item-2{
@@ -45,12 +60,32 @@
 	flex-direction:row;
 }
 
-.item2{
+.only-text{
 	display: flex;
 	flex:1;
 	text-align: center;
+	align-items: center;
 	justify-content: center;
-	background:#AAC8CB;
+	overflow: hidden;
+	padding: 20px;
+	background-color: #d9edc2;
+	border: 1px solid #b2ce96;
+}
+
+.item2{
+	display: flex;
+	flex:1;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	overflow: hidden;
+	padding: 20px;
+	background-color:#d9edc2;
+	border: 1px solid #b2ce96;
+}
+
+.item-btn{
+	background-color: black;
 }
 
 .btn-item{
@@ -58,16 +93,27 @@
 	flex:1;
 	align-items: center;
 	justify-content: center;
-	background:green;
+	background:white;
 }
 
 .btn{
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	text-align: center;
-	flex:1;
-	background:#AAC8CB; 
-}
+	justify-content: center;
+	height: 60px;
+	width: 120px;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+ }
 
+.btn:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+}
 

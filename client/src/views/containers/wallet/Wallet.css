@@ -7,20 +7,23 @@
 	justify-content: center;
 }
 
+.balance-cont{
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+}
+
 .balance{
 	display: flex;
 	align-items: center;
 	width: 1200px;
 	height: 100px;
 	margin: 3px;
-	border-radius: 10px;
-	background: orange;
-}
-
-.balance-cont{
-	display: flex;
-	flex: 1;
-	flex-direction: row;
+	border-radius:7px;
+	overflow: hidden;
+	padding: 20px;
+	background-color: white;
+	border: 1px solid black;
 }
 
 .cont-1{
@@ -38,7 +41,10 @@
 	align-items: center;
 	height: 300px;
 	width: 300px;
-	background: red;
+	overflow: hidden;
+	padding: 20px;
 	margin: 25px;
-	border-radius: 10px;
+	border-radius:7px;
+	background-color: white;
+	border: 1px solid black;
 }

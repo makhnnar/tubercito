@@ -1,6 +1,5 @@
 import React from 'react';
 import {AccessAlarm} from '@material-ui/icons';
-import Deposits from './systemupdate.svg';
 
 const Deposit = () => {
 

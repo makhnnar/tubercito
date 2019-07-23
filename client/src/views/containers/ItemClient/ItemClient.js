@@ -2,7 +2,7 @@ import React from 'react';
 import Username from '../../components/Item/Username';
 import IconText from '../../components/Item/IconText';
 import Button from '../../components/Item/Button';
-import CurrentPosition from '../../components/Item/CurrentPosition';
+import OnlyText from '../../components/forms/OnlyText';
 import Vehicle from '../../components/Item/Vehicle';
 import PickUpTime from '../../components/Item/PickUpTime';
 import './ItemClient.css';
@@ -27,7 +27,7 @@ class ItemClient extends React.Component {
         <div className="item-2">
           <div className="item-21">
             <div className="item-211">
-              <CurrentPosition/>
+              <OnlyText/>
               <Vehicle/>
             </div>
             <div className="item-212">
