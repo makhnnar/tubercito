@@ -19,7 +19,6 @@ var Database = function(){
   };
   
   this.query = function(sql,params,cbError,cbSuccess){
-    console.log('hola');
     let consulta = {
       text: sql,
       values: params,
@@ -44,4 +43,3 @@ module.exports = function(){
   instancia.init();
   return instancia;
 };
-  

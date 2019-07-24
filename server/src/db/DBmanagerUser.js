@@ -66,7 +66,7 @@ var Dbuser = function(){
   
   this.login = function(username, password, cb) {
     console.log('Revisara si existe el usuario');
-    var sql = 'SELECT * FROM user WHERE username = $1, password = $2 RETURNING id_person';
+    var sql = 'SELECT * FROM user WHERE username = $1, password = $2 RETURNING id_person, id_user';
     dataInstance.query(
       sql,
       [
@@ -82,6 +82,7 @@ var Dbuser = function(){
       }
     );
   };
+
   this.loginperson = function(id_person, cb) {
     console.log('Buscar datos de persona');
     var sql = 'SELECT * FROM person WHERE id_person = $1 RETURNING *';
@@ -89,6 +90,24 @@ var Dbuser = function(){
       sql,
       [
         id_person
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.loginsession = function(id_user, cb) {
+    console.log('Buscar token');
+    var sql = 'SELECT * FROM session WHERE id_user = $1 RETURNING token_temporal';
+    dataInstance.query(
+      sql,
+      [
+        id_user
       ],
       () => {
         cb(true,null);

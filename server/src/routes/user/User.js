@@ -22,7 +22,6 @@ var RouterUser = function(){
       valor.gender,
       valor.birthday,
       (error,result) => {
-        //let resul1 =result.id_persona;
         if(error){
           res.send({
             status:'error',
@@ -69,6 +68,7 @@ var RouterUser = function(){
             data:'No se pudo acceder'
           });
         }else{
+          let aux = result.id_user;
           managerInstace.loginperson(
             result.id_person,
             (error,result) => {
@@ -78,11 +78,24 @@ var RouterUser = function(){
                   data:'no created data'
                 });
               }else{
-                res.send({
-                  status:'success',
-                  msj:'Wellcome Back',
-                  data:result
-                });
+                let aux2=result;
+                managerInstace.loginsession(
+                  aux,
+                  (error,result) => {
+                    if(error){
+                      res.send({
+                        status:'error',
+                        data:'no created data'
+                      });
+                    }else{
+                      res.send({
+                        status:'success',
+                        msj:'Wellcome Back',
+                        data1:aux2+result
+                      });
+                    }
+                  }
+                );
               }
             }
           );

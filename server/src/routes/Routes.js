@@ -2,21 +2,23 @@ const express = require('express');
 const RouterUser = require('./user/User');
 const router = express.Router();
 
-//export default router;
-
-
-// Set default API response
-
-// Contact routes
-
 let userInstance = new RouterUser();
 
 //userInstance.test();
+
+router.route('/test')
+    .post(
+        function(req,res){
+            console.log('body: '+JSON.stringify(req.body));
+            console.log('body2 :'+req.body);
+        }
+    );
 
 router.route('/signup')
     .post(
         function(req,res){
             console.log('body: '+JSON.stringify(req.body));
+            console.log('body2 :'+req.body);
             userInstance.postCreateuser(req,res);
         }
     );
