@@ -2,7 +2,7 @@ import React from 'react';
 import Balance from '../../components/Wallet/Balance';
 import Transfer from '../../components/Wallet/Transfer';
 import Deposit from '../../components/Wallet/Deposit';
-import Remove from '../../components/Wallet/Remove';
+import Withdraw from '../../components/Wallet/Withdraw';
 import './Wallet.css';
 
 class Wallet extends React.Component {
@@ -22,7 +22,7 @@ class Wallet extends React.Component {
         <div className="cont-1">
          <Transfer/>
          <Deposit/>
-         <Remove/>
+         <Withdraw/>
         </div>
       </div>
     );

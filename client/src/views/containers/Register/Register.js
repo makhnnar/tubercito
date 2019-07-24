@@ -61,6 +61,7 @@ class Register extends React.Component {
 
     getGenderPicker = (Gender) => {
       this.setState({Gender})
+      console.log(Gender)
     };    
 
     getDriverClient = (DriverOrClient) => {

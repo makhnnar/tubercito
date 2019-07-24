@@ -1,11 +1,14 @@
 import React from 'react';
-import {compare_arrows} from '@material-ui/icons';
+import TranfersIcon from './Tranfers.svg';
 
 const Transfer = () => {
 
 	return (
 		<div className="act-1">
-			Tranfers
+			<img src={TranfersIcon} className="TranfersIcon" alt="Icon"/>
+			<p>
+				Transfer
+			</p>
 		</div>	
 	)
 }

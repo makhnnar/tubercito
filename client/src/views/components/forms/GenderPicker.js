@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
 
 class GenderPicker extends Component {
 
@@ -14,9 +15,9 @@ class GenderPicker extends Component {
 
 	render(){
 		return (
-			<div>
-			<input type="radio" name="sex" value="female" onChange={this.handleInputChange}/> Female
-			<input type="radio" name="sex" value="male" onChange={this.handleInputChange}/> Male
+			<div className="radio">
+			<input type="radio" name="genero" value="female" onChange={this.handleInputChange}/> Female
+			<input type="radio" name="genero" value="male" onChange={this.handleInputChange}/> Male
 	        </div>      
 		)
 	  }

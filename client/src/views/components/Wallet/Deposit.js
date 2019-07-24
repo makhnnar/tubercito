@@ -1,11 +1,14 @@
 import React from 'react';
-import {AccessAlarm} from '@material-ui/icons';
+import IconDeposit from './Deposit.svg';
 
 const Deposit = () => {
 
 	return (
 		<div className="act-1">
-			Deposit
+			<img src={IconDeposit} className="IconDeposit" alt="Icon"/>
+			<p>
+				Deposit
+			</p>
 		</div>	
 	)
 }
