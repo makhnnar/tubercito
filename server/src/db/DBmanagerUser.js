@@ -4,24 +4,6 @@ const dataInstance = new Database();
 
 var Dbuser = function(){
 
-  /*this.typeuser = function(description, cb) {
-    console.log('Crear tipo de usuario');
-    var sql = 'INSERT INTO userType(description) VALUES($1) RETURNING id_user_type';
-    dataInstance.query(
-      sql,
-      [
-        description
-      ],
-      () => {
-        cb(true,null);
-      },
-      (res) => {
-        console.log(JSON.stringify(res));
-        cb(null,res);
-      }
-    );
-  };*/
-
   this.createperson = function(first_name,last_name,email,gender,birthday, cb) {
     console.log('crear persona');
     var sql = 'INSERT INTO person (first_name, last_name, email, gender, birthday) VALUES($1, $2, $3, $4, $5) RETURNING id_person';
@@ -46,7 +28,7 @@ var Dbuser = function(){
 
   this.createuser = function(username, password, id_person, cb) {
     console.log('Crear usuario');
-    var sql = 'INSERT INTO user (username, password, id_person) VALUES($1, $2, $3) RETURNING id_user';
+    var sql = 'INSERT INTO users (username, password, id_person) VALUES($1, $2, $3) RETURNING id_user';
     dataInstance.query(
       sql,
       [
@@ -66,7 +48,7 @@ var Dbuser = function(){
   
   this.login = function(username, password, cb) {
     console.log('Revisara si existe el usuario');
-    var sql = 'SELECT * FROM user WHERE username = $1, password = $2 RETURNING id_person, id_user';
+    var sql = 'SELECT * FROM users WHERE username = $1, password = $2 RETURNING id_person, id_user';
     dataInstance.query(
       sql,
       [
@@ -157,7 +139,7 @@ var Dbuser = function(){
 
   this.buscarperson = function(id_user, cb) {
     console.log('buscando el id de la persona');
-    var sql = 'SELECT id_person FROM user WHERE id_user = $1 RETURNING id_person';
+    var sql = 'SELECT id_person FROM users WHERE id_user = $1 RETURNING id_person';
     dataInstance.query(
       sql,
       [

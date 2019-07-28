@@ -1,14 +1,14 @@
 
-function agregar(first_name,last_name,email,gender,birthday,username,password){
+function agregar(){
 
-	var first_name=document.getElementById('first_name').value;
-	var last_name=document.getElementById('last_name').value;
-	var email=document.getElementById('email').value;
-	var gender=document.getElementById('gender').value;
-	var birthday=document.getElementById('birthday').value;
-	var username=document.getElementById('username').value;
-	var password=document.getElementById('password').value;
-	var agregaruser='http://127.0.0.1:3005/api/test';
+	const first_name = document.getElementById('first_name').value;
+	const last_name = document.getElementById('last_name').value;
+	const email = document.getElementById('email').value;
+	const gender = document.getElementById('gender').value;
+	const birthday = document.getElementById('birthday').value;
+	const username = document.getElementById('username').value;
+	const password = document.getElementById('password').value;
+	const agregaruser = 'http://127.0.0.1:3005/api/signup';
 	console.log('los valores: '+first_name+' '+last_name+' '+email+' '+gender+' '+birthday+' '+username+' '+password);
 	fetch(
       agregaruser,
@@ -19,12 +19,12 @@ function agregar(first_name,last_name,email,gender,birthday,username,password){
 				'Access-Control-Allow-Origin': '*'
 			},
 			body:JSON.stringify({
-				first_name:this.first_name,
-				last_name:this.last_name,
-				email:this.email,
-				gender:this.gender,
-				birthday:this.birthday,
-				password:this.password
+				first_name:first_name,
+				last_name:last_name,
+				email:email,
+				gender:gender,
+				birthday:birthday,
+				password:password
 			})
 		}
 	).then(
