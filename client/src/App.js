@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter,Route,Switch} from "react-router-dom";
 import './App.css';
+import Register from './views/containers/Register/Register';
+import Login from './views/containers/Login/Login';
+import Menu from './views/containers/menu/Menu';
+import Profile from './views/containers/profile/Profile';
+import RequestClient from './views/containers/requests/ClientRequestItem';
+import RequestDriver from './views/containers/requests/DriverRequestItem';
+import Wallet from './views/containers/wallet/Wallet';
+import Chat from './views/containers/chat/Chat';
+import Home from './views/containers/Home/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Switch>
+          <Route path="/home" component={Home}/>
+          <Route path="/chat" component={Chat}/>
+          <Route path="/wallet" component={Wallet}/>
+          <Route path="/request1" component={RequestClient}/>
+          <Route path="/request2" component={RequestDriver}/>
+          <Route path="/profile" component={Profile}/>
+          <Route path="/menu" component={Menu}/>
+          <Route path="/signup" component={Register}/> 
+          <Route exact path="/" component={Login}/> 
+        </Switch>
+      </BrowserRouter>
   );
 }
 
