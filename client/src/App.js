@@ -5,8 +5,8 @@ import Register from './views/containers/Register/Register';
 import Login from './views/containers/Login/Login';
 import Menu from './views/containers/menu/Menu';
 import Profile from './views/containers/profile/Profile';
-import Item1 from './views/containers/ItemClient/ItemClient';
-import Item2 from './views/containers/ItemDriver/ItemDriver';
+import RequestClient from './views/containers/requests/ClientRequestItem';
+import RequestDriver from './views/containers/requests/DriverRequestItem';
 import Wallet from './views/containers/wallet/Wallet';
 import Chat from './views/containers/chat/Chat';
 import Home from './views/containers/Home/Home';
@@ -18,8 +18,8 @@ function App() {
           <Route path="/home" component={Home}/>
           <Route path="/chat" component={Chat}/>
           <Route path="/wallet" component={Wallet}/>
-          <Route path="/item2" component={Item2}/>
-          <Route path="/item1" component={Item1}/>
+          <Route path="/request1" component={RequestClient}/>
+          <Route path="/request2" component={RequestDriver}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/menu" component={Menu}/>
           <Route path="/signup" component={Register}/> 
