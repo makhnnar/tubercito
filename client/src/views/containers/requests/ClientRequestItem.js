@@ -1,15 +1,15 @@
 import React from 'react';
-import Username from '../../components/Item/Username';
-import IconText from '../../components/Item/IconText';
-import Button from '../../components/Item/Button';
-import TravelTime from '../../components/Item/TravelTime';
-import OnlyText from '../../components/forms/OnlyText';
-import PickUpTime from '../../components/Item/PickUpTime';
-import './ItemDriver.css';
+import Username from '../../components/request/Username';
+import IconText from '../../components/request/IconText';
+import Button from '../../components/request/Button';
+import OnlyText from '../../components/request/OnlyText';
+import Vehicle from '../../components/request/Vehicle';
+import PickUpTime from '../../components/request/PickUpTime';
+import './ClientRequestItem.css';
 
-class ItemDriver extends React.Component {
+class ClientRequestItem extends React.Component {
 
-    constructor(props) {
+    constructor(props){
       super(props);
       this.state = {
       }
@@ -28,10 +28,9 @@ class ItemDriver extends React.Component {
           <div className="item-21">
             <div className="item-211">
               <OnlyText/>
-              <OnlyText/>
+              <Vehicle/>
             </div>
             <div className="item-212">
-              <TravelTime/>
               <PickUpTime/>
             </div>
           </div>
@@ -44,4 +43,4 @@ class ItemDriver extends React.Component {
   }
 }
 
-export default ItemDriver;
+export default ClientRequestItem;

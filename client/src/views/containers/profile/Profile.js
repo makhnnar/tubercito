@@ -12,7 +12,7 @@ import ListAddress from '../../components/Address/Address';
 import ListNumeric from '../../components/telephone/Telephone';
 import ButtonUpdate from '../../components/forms/ButtonUpdate';
 import ButtonFlotant from '../../components/forms/ButtonFlotant';
-import Menu from '../menu/Menu';
+import ItemCollapse from '../../components/forms/ItemCollapse';
 import './Profile.css';
 
 class Profile extends React.Component {
@@ -27,7 +27,11 @@ class Profile extends React.Component {
         IdCard:'',
         Birthday:'',
         Gender:'',
-        DriverOrClient:''
+        DriverOrClient:'',
+        collapsed:true,
+        collapsed1:true,
+        collapsed2:true,
+        collapsed3:true
       }
     }
 
@@ -62,9 +66,31 @@ class Profile extends React.Component {
       this.setState({DriverOrClient})
     }
 
+    toggleExpanded = () => {
+      let collapsed = !this.state.collapsed;
+      this.setState({collapsed});
+    };
+
+    toggleExpanded1 = () => {
+      let collapsed1 = !this.state.collapsed1;
+      this.setState({collapsed1});
+    };
+
+    toggleExpanded2 = () => {
+      let collapsed2 = !this.state.collapsed2;
+      this.setState({collapsed2});
+    };
+
+    toggleExpanded3 = () => {
+      let collapsed3 = !this.state.collapsed3;
+      this.setState({collapsed3});
+    };
+
   render() {
     return (
       <div className="profile-container">
+      <ItemCollapse handleClick={this.toggleExpanded} text="Personal-Data"/>
+      {this.state.collapsed&&
         <div className="Personal-Data">
           <div className="camp-text1">
             <FirstName getFirstName={this.getFirstName}/>
@@ -76,17 +102,28 @@ class Profile extends React.Component {
             <BirthdayPicker getBirthdayPicker={this.getBirthdayPicker}/>
           </div>
         </div>
-
+      }
+      <ItemCollapse handleClick={this.toggleExpanded1} text="Account-data"/>
+      {this.state.collapsed1&&
         <div className="Account-data">
              <UserName getUsername={this.getUsername}/>
              <Email getEmail={this.getEmail}/>
         </div>
+      }
 
-        <div className="list-profile">
+      <ItemCollapse handleClick={this.toggleExpanded2} text="List Address"/>
+        {this.state.collapsed2&&
+          <div className="list-profile">
             <ListAddress/>
-            <ListNumeric/>
-        </div>
+         </div>
+        }
 
+      <ItemCollapse handleClick={this.toggleExpanded3} text="List Numeric"/>
+        {this.state.collapsed3&&
+          <div className="list-profile">
+            <ListNumeric/>
+         </div>
+        }
           <ButtonUpdate/>
           <ButtonFlotant/>
       </div>

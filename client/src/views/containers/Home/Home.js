@@ -1,8 +1,8 @@
 import React from 'react';
-import Username from '../../components/Item/Username';
-import CurrentPosition from '../../components/Item/CurrentPosition';
+import Username from '../../components/request/Username';
+import CurrentPosition from '../../components/request/CurrentPosition';
 import PanicButton from '../../components/forms/PanicButton';
-import TravelTime from '../../components/Item/TravelTime';
+import TravelTime from '../../components/request/TravelTime';
 import OnlyText from '../../components/forms/OnlyText';
 import RecordAudio from '../../components/forms/RecordAudio';
 import './Home.css';

@@ -1,9 +1,9 @@
 import React from 'react';
-import Username from '../../components/Item/Username';
-import DestinationUser from '../../components/Item/DestinationUser';
-import OriginUser from '../../components/Item/OriginUser';
-import PickUpTime from '../../components/Item/PickUpTime';
-import IconText from '../../components/Item/IconText';
+import Username from '../../components/request/Username';
+import DestinationUser from '../../components/request/DestinationUser';
+import OriginUser from '../../components/request/OriginUser';
+import PickUpTime from '../../components/request/PickUpTime';
+import IconText from '../../components/request/IconText';
 import MyMessage from '../../components/forms/MyMessage';
 import Send from '../../components/forms/Send';
 import './Chat.css';
