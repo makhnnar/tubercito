@@ -2,7 +2,7 @@ import React from 'react';
 import Username from '../../components/request/Username';
 import IconText from '../../components/request/IconText';
 import Button from '../../components/request/Button';
-import OnlyText from '../../components/request/OnlyText';
+import OnlyText from '../../components/forms/OnlyText';
 import Vehicle from '../../components/request/Vehicle';
 import PickUpTime from '../../components/request/PickUpTime';
 import './ClientRequestItem.css';

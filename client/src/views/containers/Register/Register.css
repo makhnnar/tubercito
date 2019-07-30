@@ -54,6 +54,7 @@
 }
 
 .register-btn{
+  cursor:pointer;
   height: 50px;
   width: 500px;
   text-decoration: none;

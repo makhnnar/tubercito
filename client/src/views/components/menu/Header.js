@@ -1,16 +1,15 @@
 import React from 'react';
-import Photo from './Gb.jpg'
+import Img from './Gb.jpg'
 
 const Header = () => {
 
 	return (
-		<div>
+		<div className="header">
 			<img 
-				className="Photo" 
-				src={Photo} 
-				alt="PHOTO"
-				border="5" 
-				width="130" 
+				className="header-img" 
+				src={Img} 
+				alt="img" 
+				width="100" 
 				height="100"/>
 		</div>	
 	)

@@ -109,6 +109,7 @@
 	height: 60px;
 	width: 120px;
     text-decoration: none;
+    cursor:pointer;
     padding: 10px;
     font-weight: 600;
     font-size: 20px;

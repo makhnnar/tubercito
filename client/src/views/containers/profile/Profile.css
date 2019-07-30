@@ -41,6 +41,7 @@
 }
 
 .profile-btn{
+  cursor:pointer;
   margin: 5px;
   height: 50px;
   width: 500px;
@@ -55,4 +56,16 @@
 
 .IconDelete{
 	height: 20px;
+}
+
+.li-numeric{
+	font-size: 13px;
+}
+
+.li-address{
+	font-size: 13px;
+}
+
+.collapse{
+	cursor:pointer;
 }

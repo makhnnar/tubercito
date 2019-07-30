@@ -6,14 +6,16 @@ const ListAddress = () => {
   const Address = ["Address","Address"];
 
   const listItems = Address.map((Address) =>
-    <li>
+    <li className="li-address">
       {Address}
       <img src={delete_forever} className="IconDelete" alt="Icon"/>
     </li>
   );
 
   return (
-    <ul>{listItems}</ul>
+    <ul className="ul-address">
+      {listItems}
+    </ul>
   );
 }
 

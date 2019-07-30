@@ -106,6 +106,7 @@
     color: black;
     background-color: #1883ba;
     border-radius: 6px;
+    cursor:pointer;
     border: 2px solid #0016b0;
  }
 

@@ -18,6 +18,7 @@
 .btn-login{
   display:flex;
   text-align: center;
+  cursor:pointer;
   justify-content: center;
   margin:10px;
   width: 500px;
@@ -35,7 +36,8 @@
 .flotant{
   display: flex;
   width:60px;
-  height:50px;
+  height:60px;
+  cursor:pointer;
   border-radius:100%;
   justify-content: center;
   background:#F44336;
@@ -45,4 +47,20 @@
   font-size:36px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   transition:.3s;  
+}
+
+.login-forgot{
+  display:flex;
+  text-align: center;
+  cursor:pointer;
+  justify-content: center;
+  align-items: center;
+  margin:10px;
+  width: 200px;
+  height: 30px;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: black;
 }

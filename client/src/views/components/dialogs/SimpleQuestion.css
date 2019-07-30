@@ -1,0 +1,44 @@
+.SimpleQuestion{
+	display: flex;
+	flex:1;
+	height: 200px;
+	width: 300px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+	background-color: white;
+	border: 3.5px solid black;
+	border-radius: 10px;
+}
+
+.text{
+	margin: 15px;
+	font-size: 15px;
+}
+
+.btns{
+	display: flex;
+	justify-content: space-around;
+	margin: 20px;
+	flex-direction: row;
+	flex: 1;
+}
+
+.dialog-btn{
+	display: flex;
+	margin: 2px;
+	width: 100px;
+	height: 20px;
+	text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    cursor:pointer;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+}

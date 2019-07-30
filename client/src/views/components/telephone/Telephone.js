@@ -6,14 +6,14 @@ const ListNumeric = () => {
   const numbers = ["04148596777","02869524959"];
 
   const listItems = numbers.map((number) =>
-    <li>
+    <li className="li-numeric">
       {number}
       <img src={delete_forever} className="IconDelete" alt="Icon"/>
     </li>
   );
 
   return (
-    <ul>{listItems}</ul>
+    <ul className="ul-numeric">{listItems}</ul>
   );
 }
 

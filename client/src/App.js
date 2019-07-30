@@ -10,11 +10,13 @@ import RequestDriver from './views/containers/requests/DriverRequestItem';
 import Wallet from './views/containers/wallet/Wallet';
 import Chat from './views/containers/chat/Chat';
 import Home from './views/containers/Home/Home';
+import Dialog from './views/components/dialogs/SimpleQuestion';
 
 function App() {
   return (
     <BrowserRouter>
         <Switch>
+          <Route path="/dialog" component={Dialog}/>
           <Route path="/home" component={Home}/>
           <Route path="/chat" component={Chat}/>
           <Route path="/wallet" component={Wallet}/>
