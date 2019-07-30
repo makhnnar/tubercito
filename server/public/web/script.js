@@ -24,6 +24,7 @@ function agregar(){
 				email:email,
 				gender:gender,
 				birthday:birthday,
+				username:username,
 				password:password
 			})
 		}

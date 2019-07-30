@@ -1,16 +1,13 @@
 const manager = require('../../db/DBmanagerUser');
+const md5 = require('md5');
 
 const managerInstace = new manager();
 
 var RouterUser = function(){
 
-  /*this.test=function(){
-    console.log('hola');
-  };*/
-
   this.postCreateuser = function(req,res){
     console.log(' ');
-    console.log('Valores: '+JSON.stringify(req.body));
+    console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -28,21 +25,47 @@ var RouterUser = function(){
             data:'no created person'
           });
         }else{
-          managerInstace.createuser(
-            valor.username,
-            valor.password,
-            result.id_person,
+          let aux1 = result[0].id_person;
+          managerInstace.createwallet(
             (error,result) => {
               if(error){
                 res.send({
                   status:'error',
-                  data:'no created user'
+                  data:'No se pudo acceder'
                 });
               }else{
-                res.send({
-                  status:'success',
-                  data:result
-                });
+                let aux2 = result[0].id_wallet;
+                managerInstace.createuser(
+                  valor.username,
+                  valor.password,
+                  aux1,
+                  aux2,
+                  (error,result) => {
+                    if(error){
+                      res.send({
+                        status:'error',
+                        data:'no created user'
+                      });
+                    }else{
+                      managerInstace.createsession(
+                        result[0].id_user,
+                        (error,result) => {
+                          if(error){
+                            res.send({
+                              status:'error',
+                              data:'no created user'
+                            });
+                          }else{
+                            res.send({
+                              status:'success',
+                              msj:'user created'
+                            }); 
+                          }
+                        }
+                      );
+                    }
+                  }
+                );
               }
             }
           );
@@ -50,48 +73,66 @@ var RouterUser = function(){
       }
     );
   };
-
+  
   this.postlogin = function (req,res){
     console.log(' ');
-    console.log('valores: '+JSON.stringify(req.body));
+    console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
     managerInstace.login(
-      valor.email,
+      valor.username,
       valor.password,
       (error,result) => {
         if(error){
           res.send({
             status:'error',
-            data:'No se pudo acceder'
+            data:'No se pudo acceder al usuario'
           });
         }else{
-          let aux = result.id_user;
+          console.log(' este: '+JSON.stringify(result[0]));
+          let aux1 = result[0].id_user;
+          let username = result[0].username;
+          let aux2 = result[0].id_person;
+          let aux3 = md5(aux1);        
           managerInstace.loginperson(
-            result.id_person,
+            aux2,
             (error,result) => {
               if(error){
                 res.send({
                   status:'error',
-                  data:'no created data'
+                  data:'no se pudo acceder a persona'
                 });
               }else{
-                let aux2=result;
+                let first_name = result[0].first_name;
+                let last_name = result[0].last_name;
+                let email = result[0].email;
+                let gender = result[0].gender;
+                let birthday = result[0].birthday;
                 managerInstace.loginsession(
-                  aux,
+                  aux1,
+                  aux3,
                   (error,result) => {
                     if(error){
                       res.send({
                         status:'error',
-                        data:'no created data'
+                        data:'no se pudo acceder a session'
                       });
                     }else{
+                      let temporal_token = result[0].temporal_token;
                       res.send({
                         status:'success',
                         msj:'Wellcome Back',
-                        data1:aux2+result
+                        data:{
+                          first_name,
+                          last_name,
+                          username,
+                          email,
+                          gender,
+                          birthday,
+                          temporal_token
+                        }
                       });
                     }
                   }
@@ -106,13 +147,13 @@ var RouterUser = function(){
 
   this.postlogout = function (req,res){
     console.log(' ');
-    console.log('valores: '+JSON.stringify(req.body));
+    console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
     managerInstace.logout(
-      valor.token_temporal,
+      valor.temporal_token,
       (error,result) => {
         if(error){
           res.send({
@@ -129,15 +170,17 @@ var RouterUser = function(){
     );
   };
 
-  this.postuser_address = function (req,res){
+  //---------------------------------------------------------------------------
+  
+  this.postuseraggaddress = function (req,res){
     console.log(' ');
-    console.log('valores: '+JSON.stringify(req.body));
+    console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
     managerInstace.buscaruser(
-      valor.token_temporal,
+      valor.temporal_token,
       (error,result) => {
         if(error){
           res.send({
@@ -154,7 +197,24 @@ var RouterUser = function(){
                   data:'no created data'
                 });
               }else{
-                managerInstace.addressid(
+                console.log(JSON.stringify(result[0]));
+                console.log(result.id_person);
+                //console.log(result[0]);
+                res.send({
+                  status:'ERROR',
+                  //data:console.log()
+                })
+                /*let id_persoon = result[0].id_person;
+                managerInstace.createdaddress(
+                  valor.country,
+                  valor.state,
+                  valor.city,
+                  valor.comunity,
+                  valor.street,
+                  valor.house,
+                  valor.block,
+                  valor.latitude,
+                  valor.longitude,
                   result.id_person,
                   (error,result) => {
                     if(error){
@@ -163,8 +223,9 @@ var RouterUser = function(){
                         data:'no created data'
                       });
                     }else{
-                      managerInstace.address(
-                        result.id_address,
+                      managerInstace.createdaddressbyperson(
+                        result[0].id_address,
+                        id_persoon,
                         (error,result) => {
                           if(error){
                             res.send({
@@ -182,6 +243,67 @@ var RouterUser = function(){
                       );
                     }
                   }
+                );*/
+              }
+            }
+          );
+        }
+      }
+    );
+  };
+//------------------------------------------------------------------------------------
+  this.postuseraddress = function (req,res){
+    console.log(' ');
+    console.log('valores ingresados: '+JSON.stringify(req.body));
+    console.log(' ');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    let valor = req.body;
+    managerInstace.buscaruser(
+      valor.temporal_token,
+      (error,result) => {
+        if(error){
+          res.send({
+            status:'error',
+            data:'No se pudo acceder'
+          });
+        }else{
+          managerInstace.buscarperson(
+            result[0].id_user,
+            (error,result) => {
+              if(error){
+                res.send({
+                  status:'error',
+                  data:'no created data'
+                });
+              }else{
+                managerInstace.addressbyperson(
+                  result[0].id_person,
+                  (error,result) => {
+                    if(error){
+                      res.send({
+                        status:'error',
+                        data:'no created data'
+                      });
+                    }else{
+                      managerInstace.address(
+                        result[0].id_address,
+                        (error,result) => {
+                          if(error){
+                            res.send({
+                              status:'error',
+                              data:'no created data'
+                            });
+                          }else{
+                            res.send({
+                              status:'success',
+                              msj:'Address',
+                            });
+                          }
+                        }
+                      );
+                    }
+                  }
                 );
               }
             }
@@ -193,13 +315,13 @@ var RouterUser = function(){
 
   this.postuser_vehicle = function (req,res){
     console.log(' ');
-    console.log('valores: '+JSON.stringify(req.body));
+    console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
     managerInstace.buscaruser(
-      valor.token_temporal,
+      valor.temporal_token,
       (error,result) => {
         if(error){
           res.send({
@@ -255,13 +377,13 @@ var RouterUser = function(){
 
   this.postuser_phones = function (req,res){
     console.log(' ');
-    console.log('valores: '+JSON.stringify(req.body));
+    console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
     managerInstace.buscaruser(
-      valor.token_temporal,
+      valor.temporal_token,
       (error,result) => {
         if(error){
           res.send({
