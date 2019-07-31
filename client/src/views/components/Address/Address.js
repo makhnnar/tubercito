@@ -1,13 +1,14 @@
 import React from 'react';
-
+import delete_forever from './delete_forever.svg';
 
 const ListAddress = () => {
 
-  const numbers = [1, 2, 3, 4, 5];
+  const Address = ["Address","Address"];
 
-  const listItems = numbers.map((number) =>
+  const listItems = Address.map((Address) =>
     <li>
-      {number}
+      {Address}
+      <img src={delete_forever} className="IconDelete" alt="Icon"/>
     </li>
   );
 
