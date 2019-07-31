@@ -1,14 +1,17 @@
-const manager = require('./DBmanager');
+const Database = require('./DBmanager');
+
+const dataInstance = new Database();
 
 var Dbtravel = function(){
 
-  this.travelrequest = function(token_temporal, cb) {
+  this.createdorigintravel = function(id_requesting_user, id_origin_address, cb){
     console.log('');
-    var sql = '';
-    manager.query(
+    var sql = 'INSER INTO travel(id_requesting_user, id_origin_address) VALUES($1, $2) RETURNING id_travel';
+    dataInstance.query(
       sql,
       [
-        token_temporal
+        id_requesting_user,
+        id_origin_address
       ],
       () => {
         cb(true,null);
@@ -20,13 +23,14 @@ var Dbtravel = function(){
     );
   };
 
-  this.travelrequest = function(token_temporal, cb) {
+  this.createddestinationtravel = function(id_destination_address, id_travel cb) {
     console.log('');
-    var sql = '';
-    manager.query(
+    var sql = 'UPDATE travel SET id_destination_address = $1 WHERE id_travel =$2';
+    dataInstance.query(
       sql,
       [
-        token_temporal
+        id_destination_address,
+        id_travel
       ],
       () => {
         cb(true,null);

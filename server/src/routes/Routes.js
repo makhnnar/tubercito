@@ -1,23 +1,8 @@
 const express = require('express');
 const RouterUser = require('./user/User');
 const router = express.Router();
-const md5 = require('md5');
 let userInstance = new RouterUser();
 
-//userInstance.test();
-
-/*router.route('/test')
-    .post(
-        function(req,res){
-            //console.log('recieving from app: '+JSON.stringify(req.body));
-            //console.log(req.body)
-            res.send({
-                status:'success',
-                data2:console.log(md5('message')),
-                data3:md5('message')
-            });
-        }
-    );*/
 
 router.route('/signup')
     .post(
@@ -43,41 +28,57 @@ router.route('/logout')
         }
 );
 
-router.route('/user_aggaddress')
+router.route('/user_createdaddress')
     .post(
         function(req,res){
-            userInstance.postuseraggaddress(req,res);
+            //listo
+            userInstance.postusercreatedaddress(req,res);
         }
 );
 
 router.route('/user_address')
     .post(
         function(req,res){
+            //listo
             userInstance.postuseraddress(req,res);
+        }
+);
+
+router.route('/user_createdvehicles')
+    .post(
+        function(req,res){
+            //listo
+            userInstance.postusercreatedvehicle(req,res);
         }
 );
 
 router.route('/user_vehicles')
     .post(
         function(req,res){
-            //en espera
-            //userInstance.postuservehicles(req,res);
+            //listo
+            userInstance.postuservehicles(req,res);
         }
 );
 
-router.route('/user_phones')
+router.route('/user_createdtelephones')
     .post(
         function(req,res){
-            //en espera
-            //userInstance.postuserphones(req,res);
+            userInstance.postusercreatedtelephones(req,res);
+        }
+);
+
+router.route('/user_telephones')
+    .post(
+        function(req,res){
+            userInstance.postusertelephones(req,res);
         }
 );
 
 router.route('/request_travel')
     .post(
         function(req,res){
-            //en espera
-            //RouterTravel.postrequesttravel(req,res);
+            //no terminado
+            RouterTravel.postrequesttravel(req,res);
         }
 );
 

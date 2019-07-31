@@ -1,7 +1,7 @@
-const manager = require('../../db/DBmanagerUser');
+const manageruser = require('../../db/DBmanagerUser');
 const md5 = require('md5');
 
-const managerInstace = new manager();
+const managerInstaceUser = new manageruser();
 
 var RouterUser = function(){
 
@@ -12,7 +12,7 @@ var RouterUser = function(){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    managerInstace.createperson(
+    managerInstaceUser.createperson(
       valor.first_name,
       valor.last_name,
       valor.email,
@@ -26,7 +26,7 @@ var RouterUser = function(){
           });
         }else{
           let aux1 = result[0].id_person;
-          managerInstace.createwallet(
+          managerInstaceUser.createwallet(
             (error,result) => {
               if(error){
                 res.send({
@@ -35,7 +35,7 @@ var RouterUser = function(){
                 });
               }else{
                 let aux2 = result[0].id_wallet;
-                managerInstace.createuser(
+                managerInstaceUser.createuser(
                   valor.username,
                   valor.password,
                   aux1,
@@ -47,7 +47,7 @@ var RouterUser = function(){
                         data:'no created user'
                       });
                     }else{
-                      managerInstace.createsession(
+                      managerInstaceUser.createsession(
                         result[0].id_user,
                         (error,result) => {
                           if(error){
@@ -81,7 +81,7 @@ var RouterUser = function(){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    managerInstace.login(
+    managerInstaceUser.login(
       valor.username,
       valor.password,
       (error,result) => {
@@ -91,12 +91,11 @@ var RouterUser = function(){
             data:'No se pudo acceder al usuario'
           });
         }else{
-          console.log(' este: '+JSON.stringify(result[0]));
           let aux1 = result[0].id_user;
           let username = result[0].username;
           let aux2 = result[0].id_person;
           let aux3 = md5(aux1);        
-          managerInstace.loginperson(
+          managerInstaceUser.loginperson(
             aux2,
             (error,result) => {
               if(error){
@@ -110,7 +109,7 @@ var RouterUser = function(){
                 let email = result[0].email;
                 let gender = result[0].gender;
                 let birthday = result[0].birthday;
-                managerInstace.loginsession(
+                managerInstaceUser.loginsession(
                   aux1,
                   aux3,
                   (error,result) => {
@@ -152,7 +151,7 @@ var RouterUser = function(){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    managerInstace.logout(
+    managerInstaceUser.logout(
       valor.temporal_token,
       (error,result) => {
         if(error){
@@ -169,17 +168,15 @@ var RouterUser = function(){
       }
     );
   };
-
-  //---------------------------------------------------------------------------
   
-  this.postuseraggaddress = function (req,res){
+  this.postusercreatedaddress = function (req,res){
     console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    managerInstace.buscaruser(
+    managerInstaceUser.buscaruser(
       valor.temporal_token,
       (error,result) => {
         if(error){
@@ -188,8 +185,8 @@ var RouterUser = function(){
             data:'No se pudo acceder'
           });
         }else{
-          managerInstace.buscarperson(
-            result.id_user,
+          managerInstaceUser.buscarperson(
+            result[0].id_user,
             (error,result) => {
               if(error){
                 res.send({
@@ -197,15 +194,8 @@ var RouterUser = function(){
                   data:'no created data'
                 });
               }else{
-                console.log(JSON.stringify(result[0]));
-                console.log(result.id_person);
-                //console.log(result[0]);
-                res.send({
-                  status:'ERROR',
-                  //data:console.log()
-                })
-                /*let id_persoon = result[0].id_person;
-                managerInstace.createdaddress(
+                let id_person = result[0].id_person;
+                managerInstaceUser.createdaddress(
                   valor.country,
                   valor.state,
                   valor.city,
@@ -215,7 +205,6 @@ var RouterUser = function(){
                   valor.block,
                   valor.latitude,
                   valor.longitude,
-                  result.id_person,
                   (error,result) => {
                     if(error){
                       res.send({
@@ -223,9 +212,9 @@ var RouterUser = function(){
                         data:'no created data'
                       });
                     }else{
-                      managerInstace.createdaddressbyperson(
+                      managerInstaceUser.createdaddressbyperson(
                         result[0].id_address,
-                        id_persoon,
+                        id_person,
                         (error,result) => {
                           if(error){
                             res.send({
@@ -235,15 +224,14 @@ var RouterUser = function(){
                           }else{
                             res.send({
                               status:'success',
-                              msj:'Address',
-                              data:result
+                              msj:'Address Created'
                             });
                           }
                         }
                       );
                     }
                   }
-                );*/
+                );
               }
             }
           );
@@ -251,7 +239,7 @@ var RouterUser = function(){
       }
     );
   };
-//------------------------------------------------------------------------------------
+
   this.postuseraddress = function (req,res){
     console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
@@ -259,7 +247,7 @@ var RouterUser = function(){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    managerInstace.buscaruser(
+    managerInstaceUser.buscaruser(
       valor.temporal_token,
       (error,result) => {
         if(error){
@@ -268,7 +256,7 @@ var RouterUser = function(){
             data:'No se pudo acceder'
           });
         }else{
-          managerInstace.buscarperson(
+          managerInstaceUser.buscarperson(
             result[0].id_user,
             (error,result) => {
               if(error){
@@ -277,7 +265,7 @@ var RouterUser = function(){
                   data:'no created data'
                 });
               }else{
-                managerInstace.addressbyperson(
+                managerInstaceUser.addressbyperson(
                   result[0].id_person,
                   (error,result) => {
                     if(error){
@@ -286,7 +274,7 @@ var RouterUser = function(){
                         data:'no created data'
                       });
                     }else{
-                      managerInstace.address(
+                      managerInstaceUser.address(
                         result[0].id_address,
                         (error,result) => {
                           if(error){
@@ -297,7 +285,7 @@ var RouterUser = function(){
                           }else{
                             res.send({
                               status:'success',
-                              msj:'Address',
+                              msj:'Address Created'
                             });
                           }
                         }
@@ -313,14 +301,14 @@ var RouterUser = function(){
     );
   };
 
-  this.postuser_vehicle = function (req,res){
+  this.postusercreatedvehicle = function (req,res){
     console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    managerInstace.buscaruser(
+    managerInstaceUser.buscaruser(
       valor.temporal_token,
       (error,result) => {
         if(error){
@@ -329,8 +317,8 @@ var RouterUser = function(){
             data:'No se pudo acceder'
           });
         }else{
-          managerInstace.buscarperson(
-            result.id_user,
+          managerInstaceUser.buscarperson(
+            result[0].id_user,
             (error,result) => {
               if(error){
                 res.send({
@@ -338,8 +326,12 @@ var RouterUser = function(){
                   data:'no created data'
                 });
               }else{
-                managerInstace.vehicleid(
-                  result.id_person,
+                let aux1 = result[0].id_person;
+                managerInstaceUser.createdvehicle(
+                  valor.color,
+                  valor.brand,
+                  valor.model,
+                  valor.year,
                   (error,result) => {
                     if(error){
                       res.send({
@@ -347,8 +339,9 @@ var RouterUser = function(){
                         data:'no created data'
                       });
                     }else{
-                      managerInstace.vehicle(
-                        result.id_address,
+                      managerInstaceUser.createdvehiclebyperson(
+                        result[0].id_vehicle,
+                        aux1,
                         (error,result) => {
                           if(error){
                             res.send({
@@ -359,7 +352,7 @@ var RouterUser = function(){
                             res.send({
                               status:'success',
                               msj:'Address',
-                              data:result
+                              data:result[0]
                             });
                           }
                         }
@@ -375,14 +368,14 @@ var RouterUser = function(){
     );
   };
 
-  this.postuser_phones = function (req,res){
+  this.postuservehicles = function (req,res){
     console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
     console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
-    managerInstace.buscaruser(
+    managerInstaceUser.buscaruser(
       valor.temporal_token,
       (error,result) => {
         if(error){
@@ -391,8 +384,8 @@ var RouterUser = function(){
             data:'No se pudo acceder'
           });
         }else{
-          managerInstace.buscarperson(
-            result.id_user,
+          managerInstaceUser.buscarperson(
+            result[0].id_user,
             (error,result) => {
               if(error){
                 res.send({
@@ -400,8 +393,8 @@ var RouterUser = function(){
                   data:'no created data'
                 });
               }else{
-                managerInstace.phoneid(
-                  result.id_person,
+                managerInstaceUser.vehicleid(
+                  result[0].id_person,
                   (error,result) => {
                     if(error){
                       res.send({
@@ -409,8 +402,8 @@ var RouterUser = function(){
                         data:'no created data'
                       });
                     }else{
-                      managerInstace.phone(
-                        result.id_telephone,
+                      managerInstaceUser.vehicle(
+                        result[0].id_vehicle,
                         (error,result) => {
                           if(error){
                             res.send({
@@ -421,7 +414,134 @@ var RouterUser = function(){
                             res.send({
                               status:'success',
                               msj:'Address',
-                              data:result
+                              data:result[0]
+                            });
+                          }
+                        }
+                      );
+                    }
+                  }
+                );
+              }
+            }
+          );
+        }
+      }
+    );
+  };
+
+  this.postusercreatedtelephones = function (req,res){
+    console.log(' ');
+    console.log('valores ingresados: '+JSON.stringify(req.body));
+    console.log(' ');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    let valor = req.body;
+    managerInstaceUser.buscaruser(
+      valor.temporal_token,
+      (error,result) => {
+        if(error){
+          res.send({
+            status:'error',
+            data:'No se pudo acceder'
+          });
+        }else{
+          managerInstaceUser.buscarperson(
+            result[0].id_user,
+            (error,result) => {
+              if(error){
+                res.send({
+                  status:'error',
+                  data:'no created data'
+                });
+              }else{
+                let aux1 = result[0].id_person;
+                managerInstaceUser.createdtelephone(
+                  valor.area_code,
+                  valor.operator,
+                  valor.number,
+                  (error,result) => {
+                    if(error){
+                      res.send({
+                        status:'error',
+                        data:'no created data'
+                      });
+                    }else{
+                      managerInstaceUser.createdtelephonebyperson(
+                        result[0].id_telephone,
+                        aux1,
+                        (error,result) => {
+                          if(error){
+                            res.send({
+                              status:'error',
+                              data:'no created data'
+                            });
+                          }else{
+                            res.send({
+                              status:'success',
+                              msj:'Created Telephone',
+                            });
+                          }
+                        }
+                      );
+                    }
+                  }
+                );
+              }
+            }
+          );
+        }
+      }
+    );
+  };
+
+  this.postusertelephones = function (req,res){
+    console.log(' ');
+    console.log('valores ingresados: '+JSON.stringify(req.body));
+    console.log(' ');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    let valor = req.body;
+    managerInstaceUser.buscaruser(
+      valor.temporal_token,
+      (error,result) => {
+        if(error){
+          res.send({
+            status:'error',
+            data:'No se pudo acceder'
+          });
+        }else{
+          managerInstaceUser.buscarperson(
+            result[0].id_user,
+            (error,result) => {
+              if(error){
+                res.send({
+                  status:'error',
+                  data:'no created data'
+                });
+              }else{
+                managerInstaceUser.telephoneid(
+                  result[0].id_person,
+                  (error,result) => {
+                    if(error){
+                      res.send({
+                        status:'error',
+                        data:'no created data'
+                      });
+                    }else{
+                      managerInstaceUser.telephone(
+                        result[0].id_telephone,
+                        (error,result) => {
+                          if(error){
+                            res.send({
+                              status:'error',
+                              data:'no created data'
+                            });
+                          }else{
+                            res.send({
+                              status:'success',
+                              msj:'Telephone',
+                              data:result[0]
                             });
                           }
                         }

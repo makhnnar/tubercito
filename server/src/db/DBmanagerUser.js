@@ -199,8 +199,8 @@ var Dbuser = function(){
   };
 
   this.createdaddress = function(country, state, city, comunity, street, house, block, latitude, longitude, cb) {
-    console.log('consiguiendo la id de la direccion');
-    var sql = 'INSERT INTO addressbyperson(country, state, city, comunity, street, house, block, latitude, longitude) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id_address';
+    console.log('creando la direccion');
+    var sql = 'INSERT INTO address(country, state, city, comunity, street, house, block, latitude, longitude) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id_address';
     dataInstance.query(
       sql,
       [
@@ -212,7 +212,7 @@ var Dbuser = function(){
         house,
         block,
         latitude,
-        longitude
+        longitude,
       ],
       () => {
         cb(true,null);
@@ -224,8 +224,8 @@ var Dbuser = function(){
     );
   };
 
-  this.createdaddressbyperson = function(id_address, id_person, cb) {
-    console.log('consiguiendo la id de la direccion');
+    this.createdaddressbyperson = function(id_address, id_person, cb) {
+    console.log('creando la id de la direccion');
     var sql = 'INSERT INTO addressbyperson(id_address, id_person) VALUES($1, $2)';
     dataInstance.query(
       sql,
@@ -279,6 +279,25 @@ var Dbuser = function(){
     );
   };
 
+  this.createdvehiclebyperson = function(id_vehicle, id_person, cb) {
+    console.log('Creando la id del vehiculo');
+    var sql = 'INSERT INTO vehiclebyperson(id_vehicle, id_person) VALUES ($1, $2)';
+    dataInstance.query(
+      sql,
+      [
+        id_vehicle,
+        id_person
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
   this.vehicleid = function(id_person, cb) {
     console.log('consiguiendo la id del vehiculo');
     var sql = 'SELECT id_vehicle FROM vehiclebyperson WHERE id_person = $1';
@@ -286,6 +305,27 @@ var Dbuser = function(){
       sql,
       [
         id_person
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.createdvehicle = function(color, brand, model, year, cb) {
+    console.log('Creando informacion del vehiculo');
+    var sql = 'INSERT INTO vehicle(color, brand, model, year) VALUES ($1, $2, $3, $4) RETURNING id_vehicle';
+    dataInstance.query(
+      sql,
+      [
+        color,
+        brand,
+        model,
+        year
       ],
       () => {
         cb(true,null);
@@ -315,8 +355,27 @@ var Dbuser = function(){
     );
   };
 
-  this.phoneid = function(id_person, cb) {
-    console.log('');
+  this.createdtelephonebyperson = function(id_telephone, id_person, cb) {
+    console.log('Creando el id de telefono por usuario');
+    var sql = 'INSERT INTO telephonebyperson(id_telephone, id_person) VALUES($1, $2)';
+    dataInstance.query(
+      sql,
+      [
+        id_telephone,
+        id_person
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.telephoneid = function(id_person, cb) {
+    console.log('Obteniendo id de telefono por usuario');
     var sql = 'SELECT id_telephone FROM telephonebyperson WHERE id_person = $1';
     dataInstance.query(
       sql,
@@ -333,8 +392,28 @@ var Dbuser = function(){
     );
   };
 
-  this.phone = function(id_telephone, cb) {
-    console.log('');
+  this.createdtelephone = function(area_code, operator, number, cb) {
+    console.log('Creando datos de telefono de usuario');
+    var sql = 'INSERT INTO telephone(area_code, operator, number) VALUES ($1, $2, $3) RETURNING id_telephone';
+    dataInstance.query(
+      sql,
+      [
+        area_code,
+        operator,
+        number
+      ],
+      () => {
+        cb(true,null);
+      },
+      (res) => {
+        console.log(JSON.stringify(res));
+        cb(null,res);
+      }
+    );
+  };
+
+  this.telephone = function(id_telephone, cb) {
+    console.log('Obteniendo datos de telefono del usuario');
     var sql = 'SELECT * FROM telephone WHERE id_telephone = $1';
     dataInstance.query(
       sql,
