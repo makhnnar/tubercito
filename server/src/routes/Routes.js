@@ -85,24 +85,22 @@ router.route('/request_travel')
 router.route('/cancel_travel_request')
     .post(
         function(req,res){
-            //en espera
-            //RouterTravel.postcanceltravelrequest(req,res);
+            //esperando algunos cambios
+            RouterTravel.postcanceltravelrequest(req,res);
         }
 );
 
 router.route('/accept_travel_borrower')
     .post(
         function(req,res){
-            //en espera
-            //RouterTravel.postaccepttravelborrower(req,res);
+            RouterTravel.postaccepttravelborrower(req,res);
         }
 );
 
 router.route('/cancel_travel_borrower')
     .post(
         function(req,res){
-            //en espera
-            //RouterTravel.postcanceltravelborrower(req,res);
+            RouterTravel.postcanceltravelborrower(req,res);
         }
 );
 

@@ -6,9 +6,7 @@ const managerInstaceUser = new manageruser();
 var RouterUser = function(){
 
   this.postCreateuser = function(req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
@@ -75,9 +73,7 @@ var RouterUser = function(){
   };
   
   this.postlogin = function (req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
@@ -145,9 +141,7 @@ var RouterUser = function(){
   };
 
   this.postlogout = function (req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
@@ -170,9 +164,7 @@ var RouterUser = function(){
   };
   
   this.postusercreatedaddress = function (req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
@@ -241,9 +233,7 @@ var RouterUser = function(){
   };
 
   this.postuseraddress = function (req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
@@ -302,9 +292,7 @@ var RouterUser = function(){
   };
 
   this.postusercreatedvehicle = function (req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
@@ -369,9 +357,7 @@ var RouterUser = function(){
   };
 
   this.postuservehicles = function (req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
@@ -431,9 +417,7 @@ var RouterUser = function(){
   };
 
   this.postusercreatedtelephones = function (req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
@@ -496,9 +480,7 @@ var RouterUser = function(){
   };
 
   this.postusertelephones = function (req,res){
-    console.log(' ');
     console.log('valores ingresados: '+JSON.stringify(req.body));
-    console.log(' ');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
