@@ -34,11 +34,14 @@ class Login extends React.Component {
   render() {
     return (
       <div className="container">
-         <UserNameLogin getUsername={this.getUsername}/>   
-          <Password getPassword={this.getPassword}/>  
+         <div className="inputs"> 
+          <UserNameLogin getUsername={this.getUsername}/>   
+          <Password getPassword={this.getPassword}/>
+         </div>   
+         <div className="btn-forgot">
           <ButtonLogin handleClick={this.validation}/>
-          <ButtonFlotant/>
           <ForgotPassword/>
+         </div> 
       </div>
     );
   }

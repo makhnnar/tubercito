@@ -107,11 +107,10 @@
     background-color: #1883ba;
     border-radius: 6px;
     cursor:pointer;
-    border: 2px solid #0016b0;
+    border: 1px solid black;
  }
 
 .btn:hover{
-    color: #1883ba;
     background-color: #ffffff;
 }
 

@@ -50,11 +50,11 @@
     color: black;
     background-color: #1883ba;
     border-radius: 6px;
+    cursor:pointer;
     border: 1.5px solid #0016b0;
  }
 
 .home-btn:hover{
-    color: #1883ba;
     background-color: #ffffff;
 }
 

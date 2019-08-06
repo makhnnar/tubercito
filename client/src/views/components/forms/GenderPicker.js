@@ -16,8 +16,8 @@ class GenderPicker extends Component {
 	render(){
 		return (
 			<div className="radio">
-			<input type="radio" name="genero" value="female" onChange={this.handleInputChange}/> Female
-			<input type="radio" name="genero" value="male" onChange={this.handleInputChange}/> Male
+			<input className="radio1" type="radio" name="genero" value="female" onChange={this.handleInputChange}/> Female
+			<input className="radio1" type="radio" name="genero" value="male" onChange={this.handleInputChange}/> Male
 	        </div>      
 		)
 	  }
