@@ -101,8 +101,14 @@ var Dbuser = function(){
         cb(true,null);
       },
       (res) => {
-        console.log(JSON.stringify(res));
-        cb(null,res);
+        if (res[0]!=null) {
+          console.log(JSON.stringify(res));
+          cb(null,res);
+        } else {
+          console.log(JSON.stringify(res));
+          cb(true,null);
+        }
+        
       }
     );
   };

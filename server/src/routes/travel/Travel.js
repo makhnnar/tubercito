@@ -1,12 +1,15 @@
 const managertravel = require('../../db/DBmanagerTravel');
 const manageruser = require('../../db/DBmanagerUser');
+const managerSocket = require('./../../socket/SocketManager.js');
+
 
 const managerInstacetravel = new managertravel();
 const managerInstaceuser = new manageruser();
+const managerInstanceSocket = new managerSocket();
 
 var RouterTravel = function(){
 
-  this.postrequesttravel = function (req,res){
+  this.postrequestravel = function (req,res){
     console.log('valores: '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -76,6 +79,21 @@ var RouterTravel = function(){
                                     msj:'No se pudo acceder'
                                   });
                                 } else {
+                                  managerInstanceSocket.pruebasocket(
+                                    (error,result) => {
+                                      if (error) {
+                                        res.send({
+                                          status:'error',
+                                          data:'No se pudo acceder'
+                                        });
+                                      } else {
+                                        res.send({
+                                          status:'success',
+                                          msg:'envia los valores del viaje'
+                                        });
+                                      }
+                                    }
+                                  );
                                   res.send({
                                     status:'success',
                                     msj:'travel created',
@@ -96,7 +114,7 @@ var RouterTravel = function(){
         }
       }
     );
-  }
+  };
 
   this.postcanceltravelrequest = function (req,res){
     console.log('valores: '+JSON.stringify(req.body));
@@ -156,9 +174,9 @@ var RouterTravel = function(){
         }
       }
     );
-  }
+  };
 
-  this.postaccepttravelborrower = function = (req,res){
+  this.postacceptravelborrower = function (req,res){
     console.log('valores ingresados ---> '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -192,10 +210,10 @@ var RouterTravel = function(){
         }
       }
     );
-  }
+  };
 
 
-  this.postcanceltravelborrower = function = (req,res){
+  this.postcanceltravelborrower = function (req,res){
     console.log('valores ingresados ---> '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -216,9 +234,9 @@ var RouterTravel = function(){
         }
       }
     );
-  }
+  };
 
-  this. = function = (req,res){
+  /*this. = function (req,res){
     console.log('valores ingresados ---> '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -226,7 +244,7 @@ var RouterTravel = function(){
     
   }
 
-  this. = function = (req,res){
+  this. = function (req,res){
     console.log('valores ingresados ---> '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -234,7 +252,7 @@ var RouterTravel = function(){
     
   }
 
-  this. = function = (req,res){
+  this. = function (req,res){
     console.log('valores ingresados ---> '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -242,7 +260,7 @@ var RouterTravel = function(){
     
   }
 
-  this. = function = (req,res){
+  this. = function (req,res){
     console.log('valores ingresados ---> '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -250,7 +268,7 @@ var RouterTravel = function(){
     
   }
 
-  this. = function = (req,res){
+  this. = function (req,res){
     console.log('valores ingresados ---> '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -258,13 +276,13 @@ var RouterTravel = function(){
     
   }
 
-  this. = function = (req,res){
+  this. = function (req,res){
     console.log('valores ingresados ---> '+JSON.stringify(req.body));
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     let valor = req.body;
     
-  }
+  }*/
 
 }
 

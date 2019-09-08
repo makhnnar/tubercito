@@ -23,7 +23,7 @@ var Dbtravel = function(){
     );
   };
 
-  this.createddestinationtravel = function(id_destination_address, id_travel cb) {
+  this.createddestinationtravel = function(id_destination_address, id_travel, cb) {
     console.log('');
     var sql = 'UPDATE travel SET id_destination_address = $1 WHERE id_travel =$2';
     dataInstance.query(
@@ -134,7 +134,7 @@ var Dbtravel = function(){
     );
   };
 
-  this. = function(cb){
+  /*this. = function(cb){
     console.log('');
     var sql = '';
     dataInstance.query(
@@ -240,12 +240,11 @@ var Dbtravel = function(){
         cb(null,res);
       }
     );
-  };
+  };*/
 
 }
 
 module.exports = function(){
   var instancia = new Dbtravel();
-  instancia.init();
   return instancia;
 };

@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>PRUEBA DE LOGIN</title>
-</head>
-<body>
-	<script type="text/javascript" src="./web/script.js"></script>
-	<div>
-		<h1>Registro</h1>
-		<h5><a href="index.html">Volver al inicio</a></h5>
+	<head>
+		<title>PRUEBA DE LOGIN</title>
+	</head>
+	<body>
+		<button onclick="cambiar()">cambiar</button>
+		<div><hr>
+			<h1>Registro</h1>
+			<h5><a href="index.html">Volver al inicio</a></h5>
+			<div>
+				<input type="text" id="first_name" placeholder="ingrese su primer nombre"><br>
+				<input type="text" id="last_name" placeholder="ingrese su primer apellido"><br>
+				<input type="email" id="email" placeholder="ingrese su correo"><br>
+				<input type="text" id="gender" placeholder="ingrese su genero"><br>
+				<input type="date" id="birthday" placeholder="ingrese su cumpleaños"><br>
+				<input type="text" id="username1" placeholder="ingrese su usuario"><br>
+				<input type="text" id="password1" placeholder="ingrese su clave"><br>
+				<input type="submit" onclick="agregar()" value="ENVIAR" >
+			</div>
+		</div><hr>
 		<div>
-			<input type="text" id="first_name" placeholder="ingrese su primer nombre"><br>
-			<input type="text" id="last_name" placeholder="ingrese su primer apellido"><br>
-			<input type="email" id="email" placeholder="ingrese su correo"><br>
-			<input type="text" id="gender" placeholder="ingrese su genero"><br>
-			<input type="date" id="birthday" placeholder="ingrese su cumpleaños"><br>
-			<input type="text" id="username" placeholder="ingrese su usuario"><br>
-			<input type="text" id="password" placeholder="ingrese su clave"><br>
-			<input type="submit" onclick="agregar()" value="ENVIAR" >
-		</div>
-	</div>
-</body>
+			<h1>LogIn</h1>
+			<div>
+				<input type="text" id="username2" placeholder="ingrese su usuario"><br>
+				<input type="text" id="password2" placeholder="ingrese su clave"><br>
+				<input type="submit" onclick="loguear()" value="ENVIAR" >
+			</div>
+		</div><hr>
+		<div>
+			<h1>PEDIR VIAJE</h1>
+		</div><hr>
+		<script type="text/javascript" src="http://localhost:3010/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="http://localhost:3010/web/script2.js"></script>
+		<script type="text/javascript" src="http://localhost:3005/web/script.js"></script>
+	</body>
 </html>

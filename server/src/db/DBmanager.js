@@ -1,6 +1,6 @@
 var Database = function(){
 
-  const { Client } = require('pg')
+  const { Client } = require('pg');
 
   this.connectionData = {
     user: 'postgres',

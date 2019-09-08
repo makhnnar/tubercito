@@ -1,7 +1,11 @@
 const manageruser = require('../../db/DBmanagerUser');
+const managerSocket = require('./../../socket/SocketManager.js');
+
 const md5 = require('md5');
 
 const managerInstaceUser = new manageruser();
+const managerInstanceSocket = new managerSocket();
+
 
 var RouterUser = function(){
 
@@ -84,7 +88,7 @@ var RouterUser = function(){
         if(error){
           res.send({
             status:'error',
-            data:'No se pudo acceder al usuario'
+            data:'Datos equivocados'
           });
         }else{
           let aux1 = result[0].id_user;
@@ -97,7 +101,7 @@ var RouterUser = function(){
               if(error){
                 res.send({
                   status:'error',
-                  data:'no se pudo acceder a persona'
+                  data:'persona no encontrada'
                 });
               }else{
                 let first_name = result[0].first_name;
@@ -115,6 +119,21 @@ var RouterUser = function(){
                         data:'no se pudo acceder a session'
                       });
                     }else{
+                      managerInstanceSocket.pruebasocket(
+                        (error,result) => {
+                          if (error) {
+                            res.send({
+                              status:'error',
+                              data:'No se pudo acceder'
+                            });
+                          } else {
+                            res.send({
+                              status:'success',
+                              msg:'envia los valores del viaje'
+                            });
+                          }
+                        }
+                      );
                       let temporal_token = result[0].temporal_token;
                       res.send({
                         status:'success',
@@ -161,6 +180,29 @@ var RouterUser = function(){
         }
       }
     );
+  };
+
+  this.postchangetypeuser = function (req,res){
+    console.log('valores ingresados: '+JSON.stringify(req.body));
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    let valor = req.body;
+   /* managerInstaceUser.(
+      valor.temporal_token,
+      (error,result) => {
+        if(error){
+          res.send({
+            status:'error',
+            data:'No se pudo acceder'
+          });
+        }else{
+          res.send({
+            status:'success',
+            msg:'Logout'
+          });
+        }
+      }
+    );*/
   };
   
   this.postusercreatedaddress = function (req,res){
