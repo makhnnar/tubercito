@@ -35,15 +35,13 @@
   flex-direction: row;  
 }
 
-.DriverClient{
+.select{
   display: flex;
   flex-grow: 1;
+  display: inline-block;
+  flex-direction: row;
 }
 
-.Gender{
-  display: flex;
-  flex-grow: 1;
-}
 
 .radio1{
   height: 20px;

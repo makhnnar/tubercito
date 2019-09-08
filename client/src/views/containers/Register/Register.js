@@ -92,12 +92,9 @@ class Register extends React.Component {
           <ConfirmPassword getPassword={this.getConfirmPassword}/>
         </div>
 
-        <div className="DriverClient">
-          <DriverClient getDriverClient={this.getDriverClient}/>
-        </div>
-
-        <div className="Gender">
+        <div className="select">
           <GenderPicker getGender={this.getGenderPicker}/>
+          <DriverClient getDriverClient={this.getDriverClient}/>
         </div>
 
         <div className="Picker-ID">

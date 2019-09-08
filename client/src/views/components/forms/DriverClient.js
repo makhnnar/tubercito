@@ -13,10 +13,12 @@ class DriverClient extends Component {
 
 	render(){
 		return (
-			<div>
-			<input className="radio1" type="radio" name="person" value="Driver" onChange={this.handleInputChange} /> Driver
-			<input className="radio1" type="radio" name="person" value="Client" onChange={this.handleInputChange} /> Client
-	        </div>      
+			<div className="custom-select">
+			 	<select>
+				    <option value="Driver" onChange={this.handleInputChange}>Driver</option>
+				    <option value="Client" onChange={this.handleInputChange}>Client</option>
+			  	</select>
+		   </div>      
 		)
 	  }
 	}
