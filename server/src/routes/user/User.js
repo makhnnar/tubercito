@@ -1,10 +1,11 @@
 const manageruser = require('../../db/DBmanagerUser');
-const managerSocket = require('./../../socket/SocketManager.js');
+const managerSocket = require('./../../../index.js');
+//const io = require('socket.io')();
+
 
 const md5 = require('md5');
 
 const managerInstaceUser = new manageruser();
-const managerInstanceSocket = new managerSocket();
 
 
 var RouterUser = function(){
@@ -119,8 +120,6 @@ var RouterUser = function(){
                         data:'no se pudo acceder a session'
                       });
                     }else{
-                      managerInstanceSocket.pruebasocket(
-                      );
                       let temporal_token = result[0].temporal_token;
                       res.send({
                         status:'success',

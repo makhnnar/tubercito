@@ -22,12 +22,13 @@ restApi.all('/*', function(req, res, next) {
 
 restApi.use('/api',rutas);
 
-/*io.on('connection', (socket) => {
+
+io.on('connection', (socket) => {
   console.log('nueva conexion', socket.id);
-  socket.on('mensaje', (data) =>{
+  /*socket.on('mensaje', (data) =>{
     io.sockets.emit('mensaje', data);
-  });
-});*/
+  });*/
+});
 
 module.exports = io;
 
