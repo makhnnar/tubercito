@@ -1,6 +1,6 @@
 const express = require('express');
-const cors = require('cors');
 const restApi = express();
+const cors = require('cors');
 const server = require('http').createServer(restApi);
 const socketserver = require('http').createServer(restApi);
 const io = require('socket.io')(socketserver);
@@ -22,12 +22,12 @@ restApi.all('/*', function(req, res, next) {
 
 restApi.use('/api',rutas);
 
-io.on('connection', (socket) => {
+/*io.on('connection', (socket) => {
   console.log('nueva conexion', socket.id);
   socket.on('mensaje', (data) =>{
     io.sockets.emit('mensaje', data);
   });
-});
+});*/
 
 module.exports = io;
 

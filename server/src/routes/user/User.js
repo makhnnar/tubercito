@@ -120,19 +120,6 @@ var RouterUser = function(){
                       });
                     }else{
                       managerInstanceSocket.pruebasocket(
-                        (error,result) => {
-                          if (error) {
-                            res.send({
-                              status:'error',
-                              data:'No se pudo acceder'
-                            });
-                          } else {
-                            res.send({
-                              status:'success',
-                              msg:'envia los valores del viaje'
-                            });
-                          }
-                        }
                       );
                       let temporal_token = result[0].temporal_token;
                       res.send({

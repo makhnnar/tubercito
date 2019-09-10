@@ -12,7 +12,7 @@ function presiono(){
 };
 
 
-socket.on('mensaje', function(data) {
-    console.log('valores que vienen del servidor: ',data)
+socket.on('mensaje', function() {
+    console.log('valores que vienen del servidor: ')
 });
 
